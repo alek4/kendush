@@ -18,9 +18,9 @@ const GridProducts: FC<GridProductsProps> = ({}) => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:h-screen overflow-y-scroll sm:grid-cols-2 gap-5">
-      {products.map((prod: Product) => (
-        <div>
+    <div className="grid grid-cols-1 overflow-x-clip gap-5 md:h-screen md:overflow-y-scroll sm:grid-cols-2">
+      {products.map((prod: Product, i) => (
+        <div key={i}>
           <Image src={prod.image} width={600} height={600} alt={prod.name} />
           <div className="flex flex-row justify-between mt-2 text-lg">
             <p>{prod.name}</p>
