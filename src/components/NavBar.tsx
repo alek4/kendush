@@ -11,7 +11,7 @@ interface NavBarProps {}
 
 const NavBar: FC<NavBarProps> = ({}) => {
   const [navbar, setNavbar] = useState(false);
-  const buttonStyle = "bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase"
+  const buttonStyle = "text-zinc-900 bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase"
 
   return (
     <nav className="fixed bottom-0 right-0 ">
@@ -67,7 +67,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
         </div>
         <div>
           <div className="flex items-center justify-between mt-5 md:py-5 md:block ">
-            <div className="md:hidden bg-yellow-300 rounded-lg">
+            <div className="md:hidden  bg-yellow-300 rounded-lg">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbar(!navbar)}
@@ -75,7 +75,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-zinc-900"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -88,7 +88,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6 text-zinc-900"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
