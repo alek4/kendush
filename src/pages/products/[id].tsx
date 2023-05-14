@@ -7,31 +7,35 @@ import GridProducts from "@/components/GridProducts";
 import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function ProductPage({ name, image, price }: Product) {
   return (
-    <div className="md:h-screen bg-[#f2f0ed] pt-24">
-      <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
-        <Image src={image} width={600} height={600} alt={name} />
-        
-        <div className="mb-20 md:mb-auto text-zinc-900">
-          <h1 className="text-6xl font-bold mb-5">{name}</h1>
-          <p className="text-4xl mb-10">
-            {price} €
-          </p>
+    <>
+      <Head>
+        <title>KENDUSH | {name}</title>
+      </Head>
+      <div className="md:h-screen bg-[#f2f0ed] pt-24">
+        <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
+          <Image src={image} width={600} height={600} alt={name} />
 
-          <div className="flex flex-col gap-5 md:max-w-xs">
-            <NextLink
-              className="bg-white rounded-full py-4 text-center"
-              href="/"
-            >
-              AGGIUNGI AL CARRELLO
-            </NextLink>
+          <div className="mb-20 md:mb-auto text-zinc-900">
+            <h1 className="text-6xl font-bold mb-5">{name}</h1>
+            <p className="text-4xl mb-10">{price} €</p>
+
+            <div className="flex flex-col gap-5 md:max-w-xs">
+              <NextLink
+                className="bg-white rounded-full py-4 text-center"
+                href="/"
+              >
+                AGGIUNGI AL CARRELLO
+              </NextLink>
+            </div>
           </div>
-        </div>
-        <NavBar></NavBar>
-      </Wrapper>
-    </div>
+          <NavBar></NavBar>
+        </Wrapper>
+      </div>
+    </>
   );
 }
 
