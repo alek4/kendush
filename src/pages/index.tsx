@@ -5,7 +5,7 @@ import NextLink from "next/link";
 
 export default function Home() {
   return (
-    <div className="relative md:h-screen bg-[#f2f0ed] pt-24">
+    <div className="md:h-screen bg-[#f2f0ed] pt-24">
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
           <h1 className="text-6xl font-bold mb-5">FELPE & T-SHIRT</h1>
