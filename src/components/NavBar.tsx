@@ -11,7 +11,8 @@ interface NavBarProps {}
 
 const NavBar: FC<NavBarProps> = ({}) => {
   const [navbar, setNavbar] = useState(false);
-  const buttonStyle = "text-zinc-900 bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase"
+  const buttonStyle =
+    "text-zinc-900 bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase";
 
   return (
     <nav className="fixed bottom-14 right-9 md:right-16 lg:right-20 xl:right-32 2xl:right-52">
@@ -25,19 +26,13 @@ const NavBar: FC<NavBarProps> = ({}) => {
             <ul className="items-end justify-center space-y-5 flex flex-col md:items-stretch md:flex-row md:space-x-3 md:space-y-0">
               <div className="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-3">
                 <NextLink href="/">
-                  <li className={buttonStyle}>
-                    chi siamo
-                  </li>
+                  <li className={buttonStyle}>chi siamo</li>
                 </NextLink>
                 <NextLink href="/">
-                  <li className={buttonStyle}>
-                    collezione
-                  </li>
+                  <li className={buttonStyle}>collezione</li>
                 </NextLink>
                 <NextLink href="/">
-                  <li className={buttonStyle}>
-                    carrello
-                  </li>
+                  <li className={buttonStyle}>carrello</li>
                 </NextLink>
               </div>
               <div className="grid grid-cols-2 gap-3 md:flex">
@@ -67,9 +62,9 @@ const NavBar: FC<NavBarProps> = ({}) => {
         </div>
         <div>
           <div className="flex items-center justify-between mt-5 md:py-5 md:block ">
-            <div className="md:hidden  bg-yellow-300 rounded-lg">
+            <div className="md:hidden bg-yellow-300 rounded-lg">
               <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-3 text-gray-700 rounded-md outline-none"
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
