@@ -14,7 +14,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
   const buttonStyle = "text-zinc-900 bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase"
 
   return (
-    <nav className="fixed bottom-0 right-0 ">
+    <nav className="fixed bottom-14 right-9 md:right-16 lg:right-20 xl:right-32 2xl:right-52">
       <div className="justify-between mx-auto items-end flex flex-col md:flex-row lg:max-w-7xl ">
         <div>
           <div
