@@ -1,19 +1,23 @@
 import GridProducts from "@/components/GridProducts";
 import NavBar from "@/components/NavBar";
 import { Wrapper } from "@/components/Wrapper";
+import NextLink from "next/link";
 
 export default function Home() {
   return (
-    <div className="h-screen bg-slate-600">
-      <Wrapper className="grid grid-cols-1 md:grid-cols-2">
-        <div className="mb-8 md:mb-auto">
-          <h1>FELPE E T-SHIT</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus,
-            nemo optio in reprehenderit labore cum est obcaecati iusto quod
-            placeat perspiciatis corporis animi, ipsam molestiae delectus ea!
-            Ipsa, quasi sapiente.
+    <div className="md:h-screen bg-[#f2f0ed] pt-24">
+      <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
+        <div className="mb-20 md:mb-auto text-zinc-900">
+          <h1 className="text-6xl font-bold mb-5">FELPE & T-SHIRT</h1>
+          <p className="text-4xl mb-10">
+            POSSIBILITA DI PERSONIZZARE TUTTI I NOSTRI DESIGN CON IL
+            TUO NOME
           </p>
+
+          <div className="flex flex-col gap-5 md:max-w-xs">
+            <NextLink className="bg-white rounded-full py-4 text-center" href="/">ACCESSORI</NextLink>
+            <NextLink className="bg-white rounded-full py-4 text-center" href="/">I CAN DO</NextLink>
+          </div>
         </div>
         <GridProducts></GridProducts>
         <NavBar></NavBar>
