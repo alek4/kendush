@@ -8,8 +8,11 @@ import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { useCart } from "@/utils/CartContext";
 
 export default function ProductPage({ name, image, price }: Product) {
+  const { addToCart } = useCart();
+
   return (
     <>
       <Head>
@@ -24,12 +27,14 @@ export default function ProductPage({ name, image, price }: Product) {
             <p className="text-4xl mb-10">{price} €</p>
 
             <div className="flex flex-col gap-5 md:max-w-xs">
-              <NextLink
+              <button
                 className="bg-white rounded-full py-4 text-center"
-                href="/"
+                onClick={() => {
+                  addToCart({ name, image, price });
+                }}
               >
                 AGGIUNGI AL CARRELLO
-              </NextLink>
+              </button>
             </div>
           </div>
           <NavBar></NavBar>

@@ -31,7 +31,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
                 <NextLink href="/">
                   <li className={buttonStyle}>collezione</li>
                 </NextLink>
-                <NextLink href="/">
+                <NextLink href="/cart">
                   <li className={buttonStyle}>carrello</li>
                 </NextLink>
               </div>

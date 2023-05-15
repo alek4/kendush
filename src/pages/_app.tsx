@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { CartProvider } from "@/utils/CartContext";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
@@ -8,7 +9,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>KENDUSH</title>
       </Head>
-      <Component {...pageProps} />
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
     </>
   );
 }
