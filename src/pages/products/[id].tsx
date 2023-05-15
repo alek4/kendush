@@ -13,7 +13,7 @@ export default function ProductPage({ name, image, price }: Product) {
   return (
     <>
       <Head>
-        <title>KENDUSH | {name}</title>
+        <title>{`KENDUSH | ${name}`}</title>
       </Head>
       <div className="md:h-screen bg-[#f2f0ed] pt-24">
         <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
