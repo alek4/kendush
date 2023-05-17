@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
-import { CartProvider } from "@/utils/CartContext";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { CartProvider } from "react-use-cart";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

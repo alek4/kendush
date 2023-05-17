@@ -1,7 +1,8 @@
 type Product = {
-    name: string,
-    price: string,
-    image: string
-}
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+};
 
-export default Product
+export default Product;

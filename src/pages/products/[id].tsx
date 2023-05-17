@@ -8,29 +8,29 @@ import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import { useCart } from "@/utils/CartContext";
+import { useCart } from "react-use-cart";
 
-export default function ProductPage({ name, image, price }: Product) {
-  const { addToCart } = useCart();
+export default function ProductPage(product: Product) {
+  const { addItem } = useCart();
 
   return (
     <>
       <Head>
-        <title>{`KENDUSH | ${name}`}</title>
+        <title>{`KENDUSH | ${product.name}`}</title>
       </Head>
       <div className="md:h-screen bg-[#f2f0ed] pt-24">
         <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
-          <Image src={image} width={600} height={600} alt={name} />
+          <Image src={product.image} width={600} height={600} alt={product.name} />
 
           <div className="mb-20 md:mb-auto text-zinc-900">
-            <h1 className="text-6xl font-bold mb-5">{name}</h1>
-            <p className="text-4xl mb-10">{price} €</p>
+            <h1 className="text-6xl font-bold mb-5">{product.name}</h1>
+            <p className="text-4xl mb-10">{product.price} €</p>
 
             <div className="flex flex-col gap-5 md:max-w-xs">
               <button
                 className="bg-white rounded-full py-4 text-center"
                 onClick={() => {
-                  addToCart({ name, image, price });
+                  addItem(product);
                 }}
               >
                 AGGIUNGI AL CARRELLO
@@ -70,6 +70,6 @@ export async function getStaticProps({ params }: any) {
 
   return {
     // Passed to the page component as props
-    props: { ...product },
+    props: product ,
   };
 }
