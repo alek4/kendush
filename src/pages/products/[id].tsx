@@ -20,7 +20,7 @@ export default function ProductPage(product: Product) {
       </Head>
       <div className="md:h-screen bg-[#f2f0ed] pt-24">
         <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
-          <Image src={product.image} width={600} height={600} alt={product.name} />
+          <Image className="max-w-xs justify-center justify-self-center" src={product.image} width={600} height={600} alt={product.name} />
 
           <div className="mb-20 md:mb-auto text-zinc-900">
             <h1 className="text-6xl font-bold mb-5">{product.name}</h1>
