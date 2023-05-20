@@ -25,10 +25,10 @@ const NavBar: FC<NavBarProps> = ({}) => {
           >
             <ul className="items-end justify-center space-y-5 flex flex-col md:items-stretch md:flex-row md:space-x-3 md:space-y-0">
               <div className="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-3">
-                <NextLink href="/">
+                <NextLink href="/#about-us">
                   <li className={buttonStyle}>chi siamo</li>
                 </NextLink>
-                <NextLink href="/">
+                <NextLink href="/#collection">
                   <li className={buttonStyle}>collezione</li>
                 </NextLink>
                 <NextLink href="/cart">
