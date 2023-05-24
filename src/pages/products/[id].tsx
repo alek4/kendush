@@ -9,6 +9,7 @@ import NextLink from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { useCart } from "react-use-cart";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function ProductPage(product: Product) {
   const { addItem } = useCart();
@@ -31,6 +32,7 @@ export default function ProductPage(product: Product) {
                 className="bg-white rounded-full py-4 text-center"
                 onClick={() => {
                   addItem(product);
+                  toast.success("Prodotto aggiunto al carrello!")
                 }}
               >
                 AGGIUNGI AL CARRELLO
@@ -38,6 +40,7 @@ export default function ProductPage(product: Product) {
             </div>
           </div>
           <NavBar></NavBar>
+          <Toaster />
         </Wrapper>
       </div>
     </>

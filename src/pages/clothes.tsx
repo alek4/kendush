@@ -8,7 +8,7 @@ export default function Clothes() {
     <div className="md:h-screen bg-[#f2f0ed] pt-24">
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
-          <h1 className="text-6xl font-bold mb-5">FELPE & T-SHIRT</h1>
+          <h1 className="text-6xl font-bold mb-5">FELPdE & T-SHIRT</h1>
           <p className="text-4xl mb-10">
             POSSIBILITA DI PERSONIZZARE TUTTI I NOSTRI DESIGN CON IL
             TUO NOME
