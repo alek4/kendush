@@ -1,18 +1,24 @@
-import React from "react";
-import Product from "@/utils/ProductType";
-import fetchProductByName from "@/utils/FetchProductByName";
-import fetchProducts from "@/utils/FetchProducts";
 import NavBar from "@/components/NavBar";
-import GridProducts from "@/components/GridProducts";
 import { Wrapper } from "@/components/Wrapper";
-import NextLink from "next/link";
-import Image from "next/image";
+import fetchProductById from "@/utils/FetchProductById";
+import fetchProducts from "@/utils/FetchProducts";
+import { Product } from "@/utils/ProductType";
 import Head from "next/head";
-import { useCart } from "react-use-cart";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import { useCart } from "react-use-cart";
 
 export default function ProductPage(product: Product) {
   const { addItem } = useCart();
+  const router = useRouter();
+
+  useEffect(() => {
+    const { category } = router.query;
+    console.log(category);
+    
+  }, []);
 
   return (
     <>
@@ -21,18 +27,25 @@ export default function ProductPage(product: Product) {
       </Head>
       <div className="md:h-screen bg-[#f2f0ed] pt-24">
         <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
-          <Image className="max-w-xs justify-center justify-self-center" src={product.image} width={600} height={600} alt={product.name} />
+          <Image
+            className="max-w-xs justify-center justify-self-center"
+            src={product.image}
+            width={600}
+            height={600}
+            alt={product.name}
+          />
 
           <div className="mb-20 md:mb-auto text-zinc-900">
             <h1 className="text-6xl font-bold mb-5">{product.name}</h1>
-            <p className="text-4xl mb-10">{product.price} €</p>
+            <p className="text-4xl mb-3">{product.price} €</p>
+            <p className="mb-10">{product.description}</p>
 
             <div className="flex flex-col gap-5 md:max-w-xs">
               <button
                 className="bg-white rounded-full py-4 text-center"
                 onClick={() => {
                   addItem(product);
-                  toast.success("Prodotto aggiunto al carrello!")
+                  toast.success("Prodotto aggiunto al carrello!");
                 }}
               >
                 AGGIUNGI AL CARRELLO
@@ -59,7 +72,7 @@ export async function getStaticPaths() {
 
   // Generate paths based on the products
   const paths = products.map((product) => ({
-    params: { id: product.name },
+    params: { id: product.id, category: product.category },
   }));
 
   return {
@@ -69,10 +82,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const product = await fetchProductByName(params.id);
+  const product = await fetchProductById(params.id, params.category);
 
   return {
     // Passed to the page component as props
-    props: product ,
+    props: product,
   };
 }

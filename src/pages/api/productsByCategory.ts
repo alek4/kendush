@@ -8,20 +8,20 @@ export default function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'GET') {
-    const { id, category } = req.query;
+    const { category } = req.query;
     
 
-    if (!id || typeof id !== 'string') {
-      return res.status(400).json({ error: 'Invalid id parameter' });
+    if (!category || typeof category !== 'string') {
+      return res.status(400).json({ error: 'Invalid category parameter' });
     }
 
-    const product = data.find((p: Product) => p.id === id && p.category === category);
+    const products = data.filter((p: Product) => p.category === category);
 
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+    if (!products) {
+      return res.status(404).json({ error: 'Products not found' });
     }
 
-    return res.status(200).json(product);
+    return res.status(200).json(products);
   }
 
   return res.status(405).json({ error: 'Method not allowed' });
