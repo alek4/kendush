@@ -49,13 +49,13 @@ export default function Home() {
             </NextLink>
             <NextLink
               className="bg-white rounded-full py-5 w-full text-center uppercase "
-              href={""}
+              href={"/accessories"}
             >
               accessori
             </NextLink>
             <NextLink
               className="bg-white rounded-full py-5 w-full text-center uppercase "
-              href={""}
+              href={"/i-can-do"}
             >
               i can do
             </NextLink>
