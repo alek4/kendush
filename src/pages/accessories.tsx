@@ -9,19 +9,23 @@ export default function Accessories({ category }: any) {
     <div className="md:h-screen bg-[#f2f0ed] pt-24">
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
-          POSSIBILITA DI PERSONALIZZARE TUTTI I NOSTRI DESIGN CON IL TUO NOME
           <h1 className="text-6xl font-bold mb-5">FELPE & T-SHIRT</h1>
-          <p className="text-4xl mb-10"></p>
+          <ul className="text-3xl mb-10">
+            <li>WOMAN MAN</li>
+            <li>KENDU:</li>
+            <li>TIE DYE</li>
+            <li>READY 4U</li>
+          </ul>
           <div className="flex flex-col gap-5 md:max-w-xs">
             <NextLink
               className="bg-white rounded-full py-4 text-center"
-              href="/"
+              href="/clothes"
             >
-              ACCESSORI
+              T-SHIRT & FELPE
             </NextLink>
             <NextLink
               className="bg-white rounded-full py-4 text-center"
-              href="/"
+              href="/i-can-do"
             >
               I CAN DO
             </NextLink>
