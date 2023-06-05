@@ -6,18 +6,18 @@ import { Product } from "@/utils/ProductType";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useCart } from "react-use-cart";
 
 export default function ProductPage(product: Product) {
   const { addItem } = useCart();
+  const [size, setSize] = useState("M");
   const router = useRouter();
 
   useEffect(() => {
     const { category } = router.query;
     console.log(category);
-    
   }, []);
 
   return (
@@ -38,13 +38,25 @@ export default function ProductPage(product: Product) {
           <div className="mb-20 md:mb-auto text-zinc-900">
             <h1 className="text-6xl font-bold mb-5">{product.name}</h1>
             <p className="text-4xl mb-3">{product.price} €</p>
+            <select
+              onChange={(e) => setSize(e.target.value)}
+              value={size}
+              name="size"
+              id="size"
+            >
+              <option value="M">M</option>
+              <option value="S">S</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
             <p className="mb-10">{product.description}</p>
 
             <div className="flex flex-col gap-5 md:max-w-xs">
               <button
                 className="bg-white rounded-full py-4 text-center"
                 onClick={() => {
-                  addItem(product);
+                  const item = { ...product, size: size };
+                  addItem(item);
                   toast.success("Prodotto aggiunto al carrello!");
                 }}
               >
