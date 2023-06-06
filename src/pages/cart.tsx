@@ -2,15 +2,16 @@ import NavBar from "@/components/NavBar";
 import { Wrapper } from "@/components/Wrapper";
 import { useCart } from "react-use-cart";
 import { useEffect, useState } from "react";
-import Product from "@/utils/ProductType";
 import Image from "next/image";
+import { Modal } from "@/components/Modal";
 
 export default function Cart() {
-  const { items, emptyCart, removeItem, updateItemQuantity, isEmpty, cartTotal } =
-    useCart();
+  const { items, updateItemQuantity, isEmpty, cartTotal } = useCart();
 
   const [allItems, setallItems] = useState<any>([{}]);
   const [_isEmpty, setisEmpty] = useState<boolean>(true);
+
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     setallItems(JSON.parse(JSON.stringify(items)));
@@ -31,8 +32,14 @@ export default function Cart() {
         ) : (
           <div className="flex flex-col gap-5 max-w-4xl mx-auto">
             <div className="flex justify-end items-center">
-              <h3 className="text-lg">Totale: <span className="font-bold text-xl">{cartTotal} €</span></h3>
-              <button className="bg-green-600 text-white uppercase px-4 py-2 rounded-lg ml-5">ORDINA</button>
+              <h3 className="text-lg">
+                Totale: <span className="font-bold text-xl">{cartTotal} €</span>
+              </h3>
+              <button onClick={() => setShowModal(true)} className="bg-green-600 text-white uppercase px-4 py-2 rounded-lg ml-5">
+                ORDINA
+              </button>
+
+              {showModal ? <Modal items={allItems} setShowModal={setShowModal} cartTotal={cartTotal} /> : null}
             </div>
             {allItems.map((prod: any, i: any) => (
               <div key={i} className="flex">
@@ -46,6 +53,9 @@ export default function Cart() {
                 <div className="flex flex-col justify-between py-4">
                   <div>
                     <h3 className="text-lg font-bold">{prod.name}</h3>
+                    <p>
+                      Taglia: <span>{prod.size}</span>
+                    </p>
                     <span className="mr-1">Quantità: </span>
                     <input
                       min={0}
