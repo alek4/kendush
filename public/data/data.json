@@ -158,5 +158,13 @@
     "image": "http://dummyimage.com/600x600.png/5fa2dd/ffffff",
     "description": "this is a super long description, aiuto non so che più scrivere aaaaa. Look at this beautiful shirt!.",
     "category": "clothes"
+  },
+  {
+    "id": "21",
+    "name": "ciao",
+    "price": 12,
+    "image": "http://dummyimage.com/600x600.png/5fa2dd/ffffff",
+    "description": "this is a super long description, aiuto non so che più scrivere aaaaa. Look at this beautiful shirt!.",
+    "category": "clothes"
   }
 ]
