@@ -15,16 +15,15 @@ export default function Gallery({
   autoSlide = false,
   autoSlideInterval = 1000,
 }: Props) {
-  const gridSize = 8;
   const [groupImages, setGroupImages] = useState<string[][]>([]);
 
   useEffect(() => {
-    for (let i = 0; i < images.length; i += gridSize) {
+    for (let i = 0; i < images.length; i += 8) {
       // console.log(i, images.slice(i, i + 6));
 
       setGroupImages((prevGroups) => [
         ...prevGroups,
-        images.slice(i, i + gridSize),
+        images.slice(i, i + 8),
       ]);
     }
   }, [images]);
@@ -41,13 +40,19 @@ export default function Gallery({
   }, []);
 
   const prevSlide = () =>
-    setCurrentIndex((curr) => (curr === 0 ? groupImages.length - 1 : curr - 1));
+    setCurrentIndex((curr) =>
+      curr === 0 ? groupImages.length - 1 : curr - 1
+    );
 
   const nextSlide = () =>
-    setCurrentIndex((curr) => (curr === groupImages.length - 1 ? 0 : curr + 1));
+    setCurrentIndex((curr) =>
+      curr === groupImages.length - 1 ? 0 : curr + 1
+    );
 
   return (
-    <div className={`w-full relative overflow-hidden group ${className}`}>
+    <div
+      className={`w-full relative overflow-hidden group ${className}`}
+    >
       <div
         className="flex transition-transform ease-out duration-500"
         style={{
@@ -57,9 +62,7 @@ export default function Gallery({
         {groupImages.map((group, indexg) => (
           <div
             key={indexg}
-            className={`w-full grid grid-cols-${
-              gridSize / 2
-            } grid-rows-2 flex-shrink-0`}
+            className={`w-full grid grid-cols-4 grid-rows-2 flex-shrink-0`}
           >
             {group.map((image, index) => (
               <Image
