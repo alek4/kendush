@@ -5,9 +5,18 @@ type InputProps = {
   type: "text" | "email";
   name: string;
   id: string;
+  value?: string | number;
+  
 };
 
-export default function Input({ id, name, placeholder, type }: InputProps) {
+export default function Input({
+  id,
+  name,
+  placeholder,
+  type,
+  value,
+
+}: InputProps) {
   return (
     <input
       className="w-full shadow-sm rounded-md border-2 border-zinc-400 py-1 px-3 focus:outline-none focus:border-zinc-700 placeholder:text-gray-400"
@@ -15,6 +24,7 @@ export default function Input({ id, name, placeholder, type }: InputProps) {
       type={type}
       name={name}
       id={id}
+      value={value}
     />
   );
 }

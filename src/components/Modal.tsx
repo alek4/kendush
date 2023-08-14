@@ -1,5 +1,6 @@
-import React, { Children } from "react";
+import React, { Children, useState } from "react";
 import Input from "./Input";
+import sendEmail from "@/utils/SendEmail";
 
 interface ModalProps {
   setShowModal: any;
@@ -12,6 +13,11 @@ export const Modal: React.FC<ModalProps> = ({
   items,
   cartTotal,
 }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [message, setMessage] = useState("");
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -28,12 +34,14 @@ export const Modal: React.FC<ModalProps> = ({
                 <form action="" className="flex flex-col gap-5">
                   <div className="flex gap-5">
                     <Input
+                      value={firstName}
                       placeholder={"Nome"}
                       type="text"
                       name="firstname"
                       id="firstname"
                     ></Input>
                     <Input
+                      value={lastName}
                       placeholder={"Cognome"}
                       type="text"
                       name="lastname"
@@ -41,18 +49,23 @@ export const Modal: React.FC<ModalProps> = ({
                     ></Input>
                   </div>
                   <Input
+                    value={email}
                     placeholder="Email"
                     type="email"
                     name="email"
                     id="email"
                   />
                   <Input
+                  
+                    value={address}
                     placeholder="Indirizzo"
                     type="text"
                     name="address"
                     id="address"
                   />
                   <textarea
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={message}
                     className="resize-none w-full shadow-sm rounded-md border-2 border-zinc-400 py-1 px-3 focus:outline-none focus:border-zinc-700 placeholder:text-gray-400"
                     placeholder="Lasciaci un messaggio per ulteriori informazioni"
                     name="message"
@@ -99,7 +112,10 @@ export const Modal: React.FC<ModalProps> = ({
               <button
                 className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  sendEmail();
+                  setShowModal(false);
+                }}
               >
                 Invia Ordine
               </button>
