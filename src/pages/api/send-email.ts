@@ -7,6 +7,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log(req.body);
+  
   await sendEmail({
     to: "alexssander488@gmail.com",
     subject: "Welcome to NextAPI",

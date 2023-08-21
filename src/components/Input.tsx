@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 
 type InputProps = {
   placeholder: string;
@@ -6,7 +6,7 @@ type InputProps = {
   name: string;
   id: string;
   value?: string | number;
-  
+  onChange?: ChangeEventHandler<HTMLElement>;
 };
 
 export default function Input({
@@ -15,7 +15,7 @@ export default function Input({
   placeholder,
   type,
   value,
-
+  onChange
 }: InputProps) {
   return (
     <input
@@ -25,6 +25,7 @@ export default function Input({
       name={name}
       id={id}
       value={value}
+      onChange={onChange}
     />
   );
 }
