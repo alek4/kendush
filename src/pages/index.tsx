@@ -5,32 +5,21 @@ import { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
 import Gallery from "@/components/Gallery";
+import PhotoCategories from "@/components/PhotoCategories";
+import PhotoGallery from "@/components/PhotoGallery";
+import images from "public/images/gallery_compleanni.json";
+import images_m from "public/images/gallery_matrimoni.json";
 
 export default function Home() {
-  const [images, setImages] = useState<string[]>([]);
-  useEffect(() => {
-    setImages([
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-      `https://picsum.photos/1920/1080/?random&t=${new Date().getTime()}`,
-    ]);
-  }, []);
+  // const [images, setImages] = useState<string[]>([]);
+  // useEffect(() => {
+  //   setImages([
+
+  //   ]);
+  // }, []);
 
   const [showGallery, setShowGallery] = useState(false);
+  const [showGalleryM, setShowGalleryM] = useState(false);
 
   return (
     <>
@@ -66,45 +55,22 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-16">
             Galleria
           </h2>
-          <div className="w-full grid grid-cols-4 grid-rows-2 flex-shrink-0">
-            <div className="relative">
-              <div
-                className="group cursor-pointer"
-                onClick={() => {
-                  setShowGallery(true);
-                }}
-              >
-                <Image
-                  src={images[0]}
-                  alt="photo"
-                  className="aspect-square object-cover"
-                  width={0}
-                  height={0}
-                  sizes="100wh"
-                  style={{ width: "100%", height: "auto" }} // optional
-                ></Image>
-                <h5 className="absolute bottom-5 left-5 text-2xl font-bold">
-                  Compleanni
-                </h5>
-              </div>
-            </div>
-          </div>
+          <PhotoCategories
+            thumbnails={[images[0], images_m[0]]}
+            categoryTitles={["Compleanni", "Matrimoni"]}
+            galleryToggles={[setShowGallery, setShowGalleryM]}
+          ></PhotoCategories>
 
-          <div
-            id="fullPageGallery"
-            className={`${
-              showGallery ? "fixed" : "hidden"
-            } w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
-            onClick={(e) => {
-              if (e.currentTarget === e.target) {
-                setShowGallery(false);
-              }
-            }}
-          >
-            <Wrapper>
-              <Gallery images={images}></Gallery>
-            </Wrapper>
-          </div>
+          <PhotoGallery
+            images={images}
+            showGallery={showGallery}
+            setShowGallery={setShowGallery}
+          ></PhotoGallery>
+          <PhotoGallery
+            images={images_m}
+            showGallery={showGalleryM}
+            setShowGallery={setShowGalleryM}
+          ></PhotoGallery>
         </Wrapper>
       </div>
       <div id="cta" className="bg-[#f2f0ed] pt-24 pb-24">

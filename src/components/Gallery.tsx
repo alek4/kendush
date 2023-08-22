@@ -15,19 +15,6 @@ export default function Gallery({
   autoSlide = false,
   autoSlideInterval = 1000,
 }: Props) {
-  const [groupImages, setGroupImages] = useState<string[][]>([]);
-
-  useEffect(() => {
-    for (let i = 0; i < images.length; i += 8) {
-      // console.log(i, images.slice(i, i + 6));
-
-      setGroupImages((prevGroups) => [
-        ...prevGroups,
-        images.slice(i, i + 8),
-      ]);
-    }
-  }, [images]);
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -40,43 +27,28 @@ export default function Gallery({
   }, []);
 
   const prevSlide = () =>
-    setCurrentIndex((curr) =>
-      curr === 0 ? groupImages.length - 1 : curr - 1
-    );
+    setCurrentIndex((curr) => (curr === 0 ? images.length - 1 : curr - 1));
 
   const nextSlide = () =>
-    setCurrentIndex((curr) =>
-      curr === groupImages.length - 1 ? 0 : curr + 1
-    );
+    setCurrentIndex((curr) => (curr === images.length - 1 ? 0 : curr + 1));
 
   return (
-    <div
-      className={`w-full relative overflow-hidden group ${className}`}
-    >
+    <div className={`w-full relative overflow-hidden group ${className}`}>
       <div
         className="flex transition-transform ease-out duration-500"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}
       >
-        {groupImages.map((group, indexg) => (
-          <div
-            key={indexg}
-            className={`w-full grid grid-cols-4 grid-rows-2 flex-shrink-0`}
-          >
-            {group.map((image, index) => (
-              <Image
-                key={index}
-                className="duration-500 aspect-square object-cover"
-                src={image}
-                width={0}
-                height={0}
-                sizes="100wh"
-                style={{ width: "100%", height: "auto" }} // optional
-                alt={`img-${index + 1}`}
-              />
-            ))}
-          </div>
+        {images.map((img, index) => (
+          <Image
+            key={index}
+            className="duration-500"
+            src={img}
+            width={1920}
+            height={1080}
+            alt={`img-${index + 1}`}
+          />
         ))}
       </div>
 
