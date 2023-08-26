@@ -1,15 +1,12 @@
 import NextLink from "next/link";
 import { FC, useState } from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaWhatsapp,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
-interface NavBarProps {}
+interface NavBarProps {
+  isHomePage?: boolean
+}
 
-const NavBar: FC<NavBarProps> = ({}) => {
+const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
   const [navbar, setNavbar] = useState(false);
   const buttonStyle =
     "text-zinc-900 bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase";
@@ -25,15 +22,18 @@ const NavBar: FC<NavBarProps> = ({}) => {
           >
             <ul className="items-end justify-center space-y-5 flex flex-col md:items-stretch md:flex-row md:space-x-3 md:space-y-0">
               <div className="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-3">
+                <NextLink href="/">
+                  <li className={buttonStyle}>home</li>
+                </NextLink>
                 <NextLink href="/#about-us">
                   <li className={buttonStyle}>chi siamo</li>
                 </NextLink>
-                <NextLink href="/#collection">
+                <NextLink href="/collections">
                   <li className={buttonStyle}>collezione</li>
                 </NextLink>
-                <NextLink href="/cart">
+                {!isHomePage ? (<NextLink href="/cart">
                   <li className={buttonStyle}>carrello</li>
-                </NextLink>
+                </NextLink>) : null}
               </div>
               <div className="grid grid-cols-2 gap-3 md:flex">
                 <NextLink href="/">

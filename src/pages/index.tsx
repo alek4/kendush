@@ -113,7 +113,7 @@ export default function Home() {
           </div>
         </Wrapper>
       </div>
-      <NavBar></NavBar>
+      <NavBar isHomePage={true}></NavBar>
     </>
   );
 }
