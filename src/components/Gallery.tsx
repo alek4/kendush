@@ -33,7 +33,7 @@ export default function Gallery({
     setCurrentIndex((curr) => (curr === images.length - 1 ? 0 : curr + 1));
 
   return (
-    <div className={`w-full relative overflow-hidden group ${className}`}>
+    <div className={`w-4/5 mx-auto relative overflow-hidden group ${className}`}>
       <div
         className="flex transition-transform ease-out duration-500"
         style={{

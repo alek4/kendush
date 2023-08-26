@@ -10,6 +10,8 @@
     "preview-email": "email dev"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.11.2",
     "@react-email/container": "0.0.8",
     "@react-email/html": "0.0.4",
     "@react-email/section": "0.0.9",

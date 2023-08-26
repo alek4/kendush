@@ -9,7 +9,11 @@ interface PhotoGalleryProps {
   showGallery: boolean;
 }
 
-const PhotoGallery: FC<PhotoGalleryProps> = ({ images, showGallery, setShowGallery }) => {
+const PhotoGallery: FC<PhotoGalleryProps> = ({
+  images,
+  showGallery,
+  setShowGallery,
+}) => {
   return (
     <div
       className={`${
@@ -21,8 +25,27 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({ images, showGallery, setShowGalle
         }
       }}
     >
-      <Wrapper>
+      <Wrapper className="flex flex-col gap-5">
         <Gallery images={images}></Gallery>
+        <div className="relative">
+          <div
+            className="group cursor-pointer"
+            onClick={() => {
+              setShowGallery(true);
+            }}
+          >
+            <Image
+              src={images[0]}
+              alt="photo"
+              className="aspect-square object-cover"
+              width={110}
+              height={110}
+            ></Image>
+            <h5 className="absolute bottom-5 left-5 text-2xl font-bold text-gray-100">
+              asd
+            </h5>
+          </div>
+        </div>
       </Wrapper>
     </div>
   );
