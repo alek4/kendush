@@ -3,23 +3,13 @@ import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
-import Image from "next/image";
-import Gallery from "@/components/Gallery";
-import PhotoCategories from "@/components/PhotoCategories";
+import CategoryGrid from "@/components/CategoryGrid";
 import PhotoGallery from "@/components/PhotoGallery";
-import images from "public/images/gallery_compleanni.json";
-import images_m from "public/images/gallery_matrimoni.json";
+import { images } from "../../public/images/categories";
+import { categories } from "@/utils/ProductType";
 
 export default function Home() {
-  // const [images, setImages] = useState<string[]>([]);
-  // useEffect(() => {
-  //   setImages([
-
-  //   ]);
-  // }, []);
-
-  const [showGallery, setShowGallery] = useState(false);
-  const [showGalleryM, setShowGalleryM] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>();
 
   return (
     <>
@@ -55,22 +45,23 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-16">
             Galleria
           </h2>
-          <PhotoCategories
-            thumbnails={[images[0], images_m[0]]}
-            categoryTitles={["Compleanni", "Matrimoni"]}
-            galleryToggles={[setShowGallery, setShowGalleryM]}
-          ></PhotoCategories>
+          <CategoryGrid
+            categories={images}
+            onCategoryClick={setSelectedCategory}
+          ></CategoryGrid>
 
-          <PhotoGallery
-            images={images}
-            showGallery={showGallery}
-            setShowGallery={setShowGallery}
-          ></PhotoGallery>
-          <PhotoGallery
-            images={images_m}
-            showGallery={showGalleryM}
-            setShowGallery={setShowGalleryM}
-          ></PhotoGallery>
+          {selectedCategory ? (
+            <PhotoGallery
+              images={
+                images.find((category) => category.name === selectedCategory)
+                  ?.images
+              }
+              otherCategories={images.filter(
+                (category) => category.name != selectedCategory
+              )}
+              setSelectedCategory={setSelectedCategory}
+            />
+          ) : null}
         </Wrapper>
       </div>
       <div id="cta" className="bg-[#f2f0ed] pt-24 pb-24">

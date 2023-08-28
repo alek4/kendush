@@ -9,7 +9,7 @@ type Props = {
   autoSlideInterval?: number;
 };
 
-export default function Gallery({
+export default function Carousel({
   images,
   className,
   autoSlide = false,
@@ -26,6 +26,8 @@ export default function Gallery({
     return () => clearInterval(interval);
   }, []);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const prevSlide = () =>
     setCurrentIndex((curr) => (curr === 0 ? images.length - 1 : curr - 1));
 
@@ -33,7 +35,7 @@ export default function Gallery({
     setCurrentIndex((curr) => (curr === images.length - 1 ? 0 : curr + 1));
 
   return (
-    <div className={`w-4/5 mx-auto relative overflow-hidden group ${className}`}>
+    <div className={`relative overflow-hidden group ${className}`}>
       <div
         className="flex transition-transform ease-out duration-500"
         style={{
@@ -43,7 +45,12 @@ export default function Gallery({
         {images.map((img, index) => (
           <Image
             key={index}
-            className="duration-500"
+            className={`duration-500 ${
+              isLoading
+                ? "grayscale blur-2xl"
+                : "grayscale-0 blur-0"
+            }`}
+            onLoadingComplete={() => setIsLoading(false)}
             src={img}
             width={1920}
             height={1080}

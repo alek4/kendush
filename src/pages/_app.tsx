@@ -5,7 +5,6 @@ import Head from "next/head";
 import { CartProvider } from "react-use-cart";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const cld = new Cloudinary({ cloud: { cloudName: "dsuzhsobi" } });
   return (
     <>
       <Head>
