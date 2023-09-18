@@ -56,9 +56,10 @@ export default function Home() {
                 images.find((category) => category.name === selectedCategory)
                   ?.images
               }
-              otherCategories={images.filter(
-                (category) => category.name != selectedCategory
-              )}
+              currentCategory={selectedCategory}
+              categories={images.map((img) => (
+                img.name
+              ))}
               setSelectedCategory={setSelectedCategory}
             />
           ) : null}

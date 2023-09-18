@@ -8,12 +8,14 @@ import Image from "next/image";
 interface PhotoGalleryProps {
   images: string[] | undefined;
   setSelectedCategory: Dispatch<SetStateAction<string | undefined>>;
-  otherCategories: CategoryImagesType[] | undefined;
+  currentCategory: string;
+  categories: string[] | undefined;
 }
 
 const PhotoGallery: FC<PhotoGalleryProps> = ({
   images,
-  otherCategories,
+  categories,
+  currentCategory,
   setSelectedCategory,
 }) => {
   return images ? (
@@ -37,18 +39,15 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
           </div>
         </div>
 
-        <div className="hidden absolute -bottom-5 right-1/2 -translate-x-[-50%]  lg:flex flex-row w-2/3 gap-5">
-          {otherCategories?.map((category, i: number) => (
+        <div className="hidden absolute bottom-5 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
+          {categories?.map((category, i: number) => (
             <div
+              className={`flex items-center rounded-xl py-3 px-5  ${currentCategory === category ? "bg-white" : "bg-white/50 outline outline-2 outline-white"} cursor-pointer`}
               onClick={() => {
-                setSelectedCategory(category.name);
+                setSelectedCategory(category);
               }}
             >
-              <BlurImage
-                key={i}
-                image={category.images[0]}
-                title={category.name}
-              />
+              <p className="capitalize text-lg">{category}</p>
             </div>
           ))}
         </div>
