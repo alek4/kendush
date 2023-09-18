@@ -29,7 +29,7 @@ const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
                   <li className={buttonStyle}>chi siamo</li>
                 </NextLink>
                 <NextLink href="/collections">
-                  <li className={buttonStyle}>collezione</li>
+                  <li className={buttonStyle}>shop</li>
                 </NextLink>
                 {!isHomePage ? (<NextLink href="/cart">
                   <li className={buttonStyle}>carrello</li>
@@ -37,22 +37,22 @@ const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
               </div>
               <div className="grid grid-cols-2 gap-3 md:flex">
                 <NextLink href="/">
-                  <li className={`${buttonStyle} py-4`}>
+                  <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaFacebook></FaFacebook>
                   </li>
                 </NextLink>
                 <NextLink href="/">
-                  <li className={`${buttonStyle} py-4`}>
+                  <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaInstagram></FaInstagram>
                   </li>
                 </NextLink>
                 <NextLink href="/">
-                  <li className={`${buttonStyle} py-4`}>
+                  <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaWhatsapp></FaWhatsapp>
                   </li>
                 </NextLink>
                 <NextLink href="/">
-                  <li className={`${buttonStyle} py-4`}>
+                  <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaYoutube></FaYoutube>
                   </li>
                 </NextLink>
