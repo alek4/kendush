@@ -91,27 +91,5 @@ export const images: CategoryImagesType[] = [
             "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 33}",
             "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 34}"
         ]
-    },
-    {
-        name: "battesimi",
-        images: [
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 182}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 194}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 210}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 214}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 225}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 263}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 274}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 259}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 926}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 277}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 288}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 279}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 370}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 31}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 32}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 33}",
-            "https://picsum.photos/1920/1080/?random&t=${new Date().getTime() + 34}"
-        ]
     }
 ]

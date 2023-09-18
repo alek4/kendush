@@ -42,7 +42,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         <div className="hidden absolute bottom-5 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
           {categories?.map((category, i: number) => (
             <div
-              className={`flex items-center rounded-xl py-3 px-5  ${currentCategory === category ? "bg-white" : "bg-white/50 outline outline-2 outline-white"} cursor-pointer`}
+              className={`flex items-center rounded-xl py-3 px-5  ${currentCategory === category ? "bg-white" : "bg-white/50 "} border-2 border-white cursor-pointer`}
               onClick={() => {
                 setSelectedCategory(category);
               }}

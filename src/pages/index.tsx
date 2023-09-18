@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import CategoryGrid from "@/components/CategoryGrid";
 import PhotoGallery from "@/components/PhotoGallery";
-import { images } from "../../public/images/categories";
+import { images } from "../../public/images/image_categories";
+import { videos } from "../../public/videos/video_categories";
 import { categories } from "@/utils/ProductType";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>();
+  const [selectedVideoCategory, setSelectedVideoCategory] = useState<string>();
 
   return (
     <>
@@ -45,6 +47,9 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-16">
             Galleria
           </h2>
+          <h4 className="mb-8 uppercase text-gray-400 font-bold text-3xl">
+            Foto
+          </h4>
           <CategoryGrid
             categories={images}
             onCategoryClick={setSelectedCategory}
@@ -57,10 +62,28 @@ export default function Home() {
                   ?.images
               }
               currentCategory={selectedCategory}
-              categories={images.map((img) => (
-                img.name
-              ))}
+              categories={images.map((img) => img.name)}
               setSelectedCategory={setSelectedCategory}
+            />
+          ) : null}
+
+          <h4 className="mb-8 mt-16 uppercase text-gray-400 font-bold text-3xl">
+            Video
+          </h4>
+          <CategoryGrid
+            categories={videos}
+            onCategoryClick={setSelectedVideoCategory}
+          ></CategoryGrid>
+
+          {selectedVideoCategory ? (
+            <PhotoGallery
+              images={
+                videos.find((category) => category.name === selectedVideoCategory)
+                  ?.images
+              }
+              currentCategory={selectedVideoCategory}
+              categories={videos.map((video) => video.name)}
+              setSelectedCategory={setSelectedVideoCategory}
             />
           ) : null}
         </Wrapper>
