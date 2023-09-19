@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <div
         id="home"
-        className={`md:h-screen bg-[url(/images/image1.webp)] bg-center bg-cover pt-24 relative`}
+        className={`h-screen bg-[url(/images/image1.webp)] bg-center bg-cover pt-24 relative`}
       >
         <Wrapper className="">
           <div className="absolute bottom-40">
@@ -35,7 +35,7 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl">
+          <p className="max-w-xl text-zinc-900 text-xl text-center">
             Kendu è un nome, un brand ma non solo questo. Da dove arriva lo
             sappiamo: dall'amore viscerale per l'hip hop e da tutto ciò che lo
             circonda. Dove ci porterà lo scopriremo insieme a voi.
@@ -92,17 +92,17 @@ export default function Home() {
         <Wrapper className="flex flex-col justify-center items-center">
           <NextLink
             href="/collections"
-            className="flex items-center group uppercase text-yellow-400 font-bold text-5xl"
+            className="flex items-center group uppercase text-yellow-400 font-bold text-5xl text-center"
           >
             Fai un salto nel nostro shop!
-            <span className="hidden group-hover:block ml-5 text-4xl">
+            <span className="hidden  md:group-hover:block ml-5 text-4xl">
               <FaChevronRight></FaChevronRight>
             </span>
           </NextLink>
         </Wrapper>
       </div>
       <div id="contact" className="md:h-screen pt-24 pb-24 bg-zinc-500">
-        <Wrapper className="grid grid-cols-2">
+        <Wrapper className="flex flex-col justify-between gap-20 lg:flex-row">
           <div className="uppercase font-bold text-6xl text-white">
             <h1>fatti sentire.</h1>
             <h1>contattaci!</h1>
