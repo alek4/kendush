@@ -32,7 +32,7 @@ export const Modal: React.FC<ModalProps> = ({
             <div className="relative p-6 flex-auto">
               <div className="w-full">
                 <form action="" className="flex flex-col gap-5">
-                  <div className="flex gap-5">
+                  <div className="flex flex-col sm:flex-row gap-5">
                     <Input
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setFirstName(e.target.value)
@@ -84,31 +84,8 @@ export const Modal: React.FC<ModalProps> = ({
                   />
                 </form>
               </div>
-              {/* {items.map((prod: any, i: number) => (
-                <div key={i} className="flex">
-                  <div className="flex flex-col justify-between py-4 w-full">
-                    <div>
-                      <h3 className="text-lg font-bold">{prod.name}</h3>
-                      <div className="flex gap-5">
-                        <p>
-                          Taglia: <span>{prod.size}</span>
-                        </p>
-                        <p className="mr-1">Quantità: {prod.quantity}</p>
-                      </div>
-                    </div>
-                    <div className="self-end">
-                      <p className="mt-auto inline-block">
-                        {Math.round(
-                          (prod.quantity * prod.price + Number.EPSILON) * 100
-                        ) / 100}{" "}
-                        €
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))} */}
               <div className="text-right font-bold text-2xl mt-5">
-                <h3>Totale: {cartTotal}</h3>
+                <h3>Totale: {cartTotal} €</h3>
               </div>
             </div>
             {/*footer*/}
@@ -127,6 +104,7 @@ export const Modal: React.FC<ModalProps> = ({
                   sendEmail({
                     firstName,
                     lastName,
+                    email,
                     address,
                     message,
                     items

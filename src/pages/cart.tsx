@@ -33,13 +33,13 @@ export default function Cart() {
           <div className="flex flex-col gap-5 max-w-4xl mx-auto">
             <div className="flex justify-end items-center">
               <h3 className="text-lg">
-                Totale: <span className="font-bold text-xl">{cartTotal} €</span>
+                Totale: <span className="font-bold text-xl">{Math.round(cartTotal * 100) / 100} €</span>
               </h3>
               <button onClick={() => setShowModal(true)} className="bg-green-600 text-white uppercase px-4 py-2 rounded-lg ml-5">
                 ORDINA
               </button>
 
-              {showModal ? <Modal items={allItems} setShowModal={setShowModal} cartTotal={cartTotal} /> : null}
+              {showModal ? <Modal items={allItems} setShowModal={setShowModal} cartTotal={Math.round(cartTotal * 100) / 100} /> : null}
             </div>
             {allItems.map((prod: any, i: any) => (
               <div key={i} className="flex">

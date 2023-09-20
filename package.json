@@ -12,9 +12,13 @@
   "dependencies": {
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.11.2",
+    "@react-email/column": "0.0.7",
     "@react-email/container": "0.0.8",
+    "@react-email/hr": "0.0.5",
     "@react-email/html": "0.0.4",
+    "@react-email/row": "0.0.5",
     "@react-email/section": "0.0.9",
+    "@react-email/tailwind": "0.0.8",
     "@react-email/text": "0.0.5",
     "@types/node": "18.15.11",
     "@types/nodemailer": "^6.4.8",
