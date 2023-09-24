@@ -2,7 +2,7 @@ import { Product, categories } from "./ProductType";
 import { EmailPropsType } from './EmailPropsType'
 
 
-export default async function sendEmail(emailBody: EmailPropsType): Promise<Product | null> {
+export default async function sendEmail(emailBody: EmailPropsType, onSuccess: () => any, onError?: () => any): Promise<Product | null> {
   try {
     const response = await fetch(
       `http://localhost:3000/api/send-email`,
@@ -18,9 +18,7 @@ export default async function sendEmail(emailBody: EmailPropsType): Promise<Prod
       }
     );
     if (response.ok) {
-      console.log("yey");
-
-      return null;
+      return onSuccess();
     }
     return null;
   } catch (error) {

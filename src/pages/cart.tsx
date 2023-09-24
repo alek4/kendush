@@ -4,6 +4,7 @@ import { useCart } from "react-use-cart";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Modal } from "@/components/Modal";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Cart() {
   const { items, updateItemQuantity, isEmpty, cartTotal } = useCart();
@@ -39,7 +40,7 @@ export default function Cart() {
                 ORDINA
               </button>
 
-              {showModal ? <Modal items={allItems} setShowModal={setShowModal} cartTotal={Math.round(cartTotal * 100) / 100} /> : null}
+              {showModal ? <Modal toast={toast} items={allItems} setShowModal={setShowModal} cartTotal={Math.round(cartTotal * 100) / 100} /> : null}
             </div>
             {allItems.map((prod: any, i: any) => (
               <div key={i} className="flex">
@@ -88,6 +89,7 @@ export default function Cart() {
         )}
       </Wrapper>
       <NavBar></NavBar>
+      <Toaster></Toaster>
     </div>
   );
 }
