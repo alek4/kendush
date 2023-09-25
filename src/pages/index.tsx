@@ -25,7 +25,7 @@ export default function Home() {
         <Wrapper className="">
           <div className="absolute bottom-40">
             <h1 className="uppercase text-blue-600 font-bold text-6xl">
-              k per l'asso.
+              k per l&apos;asso.
             </h1>
             <h3 className="uppercase text-red-500 font-bold text-3xl">
               get yourself a piece of kendu
@@ -40,8 +40,8 @@ export default function Home() {
           </h2>
           <p className="max-w-xl text-zinc-900 text-xl text-center">
             Kendu è un nome, un brand ma non solo questo. Da dove arriva lo
-            sappiamo: dall'amore viscerale per l'hip hop e da tutto ciò che lo
-            circonda. Dove ci porterà lo scopriremo insieme a voi.
+            sappiamo: dall&apos;amore viscerale per l&apos;hip hop e da tutto
+            ciò che lo circonda. Dove ci porterà lo scopriremo insieme a voi.
           </p>
         </Wrapper>
       </div>

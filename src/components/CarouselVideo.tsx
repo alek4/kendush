@@ -1,6 +1,5 @@
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ReactPlayer from "react-player/lazy";
 
 type Props = {
@@ -26,8 +25,6 @@ export default function Carousel({
 
     return () => clearInterval(interval);
   }, []);
-
-  const [isLoading, setIsLoading] = useState(true);
 
   const prevSlide = () =>
     setCurrentIndex((curr) => (curr === 0 ? videos.length - 1 : curr - 1));

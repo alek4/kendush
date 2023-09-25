@@ -1,10 +1,7 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
-import { Wrapper } from "./Wrapper";
-import Carousel from "./Carousel";
+import { Dispatch, FC, SetStateAction } from "react";
 import { IoMdClose } from "react-icons/io";
-import { CategoryImagesType } from "@/utils/CategoryImagesType";
-import Image from "next/image";
 import CarouselVideo from "./CarouselVideo";
+import { Wrapper } from "./Wrapper";
 
 interface PhotoGalleryProps {
   videos: string[] | undefined;
@@ -43,7 +40,10 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         <div className="hidden absolute bottom-12 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
           {categories?.map((category, i: number) => (
             <div
-              className={`flex items-center rounded-xl py-3 px-5  ${currentCategory === category ? "bg-white" : "bg-white/50 "} border-2 border-white cursor-pointer`}
+              key={i}
+              className={`flex items-center rounded-xl py-3 px-5  ${
+                currentCategory === category ? "bg-white" : "bg-white/50 "
+              } border-2 border-white cursor-pointer`}
               onClick={() => {
                 setSelectedCategory(category);
               }}

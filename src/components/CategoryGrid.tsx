@@ -18,6 +18,7 @@ const CategoryGrid: FC<CategoryGridProps> = ({
           onClick={() => {
             onCategoryClick(category.name);
           }}
+          key={i}
         >
           <BlurImage key={i} image={category.images[0]} title={category.name} />
         </div>
