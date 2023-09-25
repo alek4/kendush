@@ -1,4 +1,4 @@
-import { Product, categories } from "./ProductType";
+import { Product } from "./ProductType";
 import { EmailPropsType } from './EmailPropsType'
 
 

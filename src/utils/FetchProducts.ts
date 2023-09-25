@@ -1,4 +1,4 @@
-import {Product} from "./ProductType";
+import { Product } from "./ProductType";
 
 export default async function fetchProducts(): Promise<
   Product[] | null

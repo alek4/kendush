@@ -1,15 +1,15 @@
-import {Categories, Product} from "./ProductType";
+import { Categories, Product } from "./ProductType";
 
 export default async function fetchProductsByCategory(
   category: Categories
 ): Promise<Product[] | null> {
-    try {
+  try {
     const response = await fetch(
       `http://localhost:3000/api/productsByCategory?category=${category}`
     );
     if (response.ok) {
       const products = await response.json();
-      
+
       return products;
     }
     return null;
