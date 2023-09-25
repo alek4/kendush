@@ -38,7 +38,7 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl text-center">
+          <p className="max-w-xl text-zinc-900 text-xl text-center">2
             Kendu è un nome, un brand ma non solo questo. Da dove arriva lo
             sappiamo: dall&apos;amore viscerale per l&apos;hip hop e da tutto
             ciò che lo circonda. Dove ci porterà lo scopriremo insieme a voi.

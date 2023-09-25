@@ -4,11 +4,10 @@ import { Wrapper } from "@/components/Wrapper";
 import fetchProductById from "@/utils/FetchProductById";
 import fetchProducts from "@/utils/FetchProducts";
 import { Product } from "@/utils/ProductType";
-import { Html } from "next/document";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { MouseEventHandler, SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useCart } from "react-use-cart";
 
