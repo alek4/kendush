@@ -8,6 +8,9 @@ import PhotoGallery from "@/components/PhotoGallery";
 import { images } from "../../public/images/image_categories";
 import { videos } from "../../public/videos/video_categories";
 import { categories } from "@/utils/ProductType";
+import VideoGallery from "@/components/VideoGallery";
+import ReactPlayer from "react-player/lazy";
+import { CategoryImagesType } from "@/utils/CategoryImagesType";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>();
@@ -70,16 +73,23 @@ export default function Home() {
           <h4 className="mb-8 mt-16 uppercase text-gray-400 font-bold text-3xl">
             Video
           </h4>
+
           <CategoryGrid
-            categories={videos}
+            categories={videos.map((category) => {
+              return {
+                name: category.name,
+                images: [category.thumbnail],
+              };
+            })}
             onCategoryClick={setSelectedVideoCategory}
           ></CategoryGrid>
 
           {selectedVideoCategory ? (
-            <PhotoGallery
-              images={
-                videos.find((category) => category.name === selectedVideoCategory)
-                  ?.images
+            <VideoGallery
+              videos={
+                videos.find(
+                  (category) => category.name === selectedVideoCategory
+                )?.videos
               }
               currentCategory={selectedVideoCategory}
               categories={videos.map((video) => video.name)}
