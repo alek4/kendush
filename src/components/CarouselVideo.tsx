@@ -41,7 +41,7 @@ export default function Carousel({
         }}
       >
         {videos.map((vid, index) => (
-          <div className="shrink-0 basis-full">
+          <div key={index} className="shrink-0 basis-full">
             <ReactPlayer url={vid} key={index} width={"100%"} height={"auto"} lazy controls loop />
           </div>
         ))}
