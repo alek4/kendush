@@ -3,12 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["dummyimage.com", "picsum.photos"],
-  }
-}
-
-module.exports = {
-  nextConfig,
-  async headers() {
+  },
+  headers() {
     return [
       {
         // matching all API routes
@@ -23,3 +19,5 @@ module.exports = {
     ]
   }
 }
+
+module.exports = nextConfig
