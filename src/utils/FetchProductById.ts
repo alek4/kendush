@@ -6,7 +6,7 @@ export default async function fetchProductById(
 ): Promise<Product | null> {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/product?id=${id}&category=${category}`
+      `api/product?id=${id}&category=${category}`
     );
     if (response.ok) {
       const product = await response.json();

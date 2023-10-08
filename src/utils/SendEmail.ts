@@ -5,7 +5,7 @@ import { EmailPropsType } from './EmailPropsType'
 export default async function sendEmail(emailBody: EmailPropsType, onSuccess: () => any, onError?: () => any): Promise<Product | null> {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/send-email`,
+      `api/send-email`,
       {
         method: "post",
         headers: {

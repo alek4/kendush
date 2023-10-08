@@ -5,7 +5,7 @@ export default async function fetchProductsByCategory(
 ): Promise<Product[] | null> {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/productsByCategory?category=${category}`
+      `api/productsByCategory?category=${category}`
     );
     if (response.ok) {
       const products = await response.json();
