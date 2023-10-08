@@ -167,6 +167,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const product = await fetchProductById(params.id, params.category);
 
+  console.log(product);
+  
+
   return {
     // Passed to the page component as props
     props: product,
