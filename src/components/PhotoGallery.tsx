@@ -21,8 +21,6 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
-
   return images ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -38,7 +36,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
 
           <div
             onClick={() => setSelectedCategory(undefined)}
-            className="absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+            className="hidden lg:block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
           >
             <IoMdClose></IoMdClose>
           </div>

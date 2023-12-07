@@ -20,7 +20,7 @@ export default function CarouselAdapter({
 
   return (
     <Carousel
-      className="bg-red-600"
+      className="group"
       autoPlay={autoSlide}
       showIndicators={false}
       infiniteLoop
@@ -31,7 +31,7 @@ export default function CarouselAdapter({
       ) => (
         <div
           onClick={clickHandler}
-          className="block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+          className="group-hover:block hidden absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
         >
           <FaChevronRight />
         </div>
@@ -43,26 +43,25 @@ export default function CarouselAdapter({
       ) => (
         <div
           onClick={clickHandler}
-          className="block absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+          className="group-hover:block hidden absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
         >
           <FaChevronLeft />
         </div>
       )}
     >
       {images.map((img, index) => (
-        <div>
-          <Image
-            key={index}
-            className={`duration-500 ${
-              isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
-            }`}
-            onLoadingComplete={() => setIsLoading(false)}
-            src={img}
-            width={1920}
-            height={1080}
-            alt={`img-${index + 1}`}
-          />
-        </div>
+        <Image
+          key={index}
+          className={`duration-500 object-cover ${
+            isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
+          }`}
+          onLoadingComplete={() => setIsLoading(false)}
+          src={img}
+          width={0}
+          height={0}
+          sizes="100wh"
+          alt={`img-${index + 1}`}
+        />
       ))}
     </Carousel>
   );
