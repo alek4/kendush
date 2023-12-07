@@ -4,26 +4,25 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { Carousel } from "react-responsive-carousel";
 
 type Props = {
-  images: string[];
   className?: string;
   autoSlide?: boolean;
   autoSlideInterval?: number;
+  children: any;
 };
 
 export default function CarouselAdapter({
-  images,
   className,
   autoSlide = false,
   autoSlideInterval = 1000,
+  children,
 }: Props) {
-  const [isLoading, setIsLoading] = useState(true);
-
   return (
     <Carousel
       className="group"
       autoPlay={autoSlide}
       showIndicators={false}
       infiniteLoop
+      renderItem={(item: any, props) => <item.type {...item.props} {...props} />}
       renderArrowNext={(
         clickHandler: () => void,
         hasNext: boolean,
@@ -49,20 +48,7 @@ export default function CarouselAdapter({
         </div>
       )}
     >
-      {images.map((img, index) => (
-        <Image
-          key={index}
-          className={`duration-500 object-cover ${
-            isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
-          }`}
-          onLoadingComplete={() => setIsLoading(false)}
-          src={img}
-          width={0}
-          height={0}
-          sizes="100wh"
-          alt={`img-${index + 1}`}
-        />
-      ))}
+      {...children}
     </Carousel>
   );
 }

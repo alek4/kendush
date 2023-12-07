@@ -2,6 +2,9 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { IoMdClose } from "react-icons/io";
 import CarouselVideo from "./CarouselVideo";
 import { Wrapper } from "./Wrapper";
+import { Carousel } from "react-responsive-carousel";
+import ReactPlayer from "react-player";
+import CarouselAdapter from "./CarouselAdapter";
 
 interface PhotoGalleryProps {
   videos: string[] | undefined;
@@ -27,7 +30,21 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
     >
       <Wrapper className="relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
-          <CarouselVideo videos={videos} />
+          <CarouselAdapter>
+            {videos.map((vid, index) => (
+              <div key={index} className="shrink-0 basis-full">
+                <ReactPlayer
+                  url={vid}
+                  key={index}
+                  width={"100%"}
+                  height={"auto"}
+                  lazy
+                  controls
+                  loop
+                />
+              </div>
+            ))}
+          </CarouselAdapter>
 
           <div
             onClick={() => setSelectedCategory(undefined)}
