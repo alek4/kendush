@@ -1,8 +1,12 @@
 import Image from "next/image";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Carousel from "./Carousel";
+// import Carousel from "./Carousel";
 import { Wrapper } from "./Wrapper";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import CarouselAdapter from "./CarouselAdapter";
 
 interface PhotoGalleryProps {
   images: string[] | undefined;
@@ -17,6 +21,8 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return images ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -28,7 +34,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
     >
       <Wrapper className="relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
-          <Carousel images={images} />
+          <CarouselAdapter images={images} />
 
           <div
             onClick={() => setSelectedCategory(undefined)}

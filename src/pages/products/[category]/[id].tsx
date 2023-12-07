@@ -1,4 +1,4 @@
-import Carousel from "@/components/Carousel";
+import Carousel from "@/components/CarouselAdapter";
 import NavBar from "@/components/NavBar";
 import { Wrapper } from "@/components/Wrapper";
 import fetchProductById from "@/utils/FetchProductById";
