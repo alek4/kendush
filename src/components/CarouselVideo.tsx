@@ -16,6 +16,7 @@ export default function Carousel({
   autoSlideInterval = 1000,
 }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  
 
   useEffect(() => {
     if (!autoSlide) return;

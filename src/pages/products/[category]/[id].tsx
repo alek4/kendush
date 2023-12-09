@@ -1,4 +1,3 @@
-import Carousel from "@/components/CarouselAdapter";
 import NavBar from "@/components/NavBar";
 import { Wrapper } from "@/components/Wrapper";
 import fetchProductById from "@/utils/FetchProductById";
@@ -9,7 +8,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import { Carousel } from "react-responsive-carousel";
 import { useCart } from "react-use-cart";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function ProductPage(product: Product) {
   const { addItem } = useCart();
@@ -55,6 +57,8 @@ export default function ProductPage(product: Product) {
     }
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
       <Head>
@@ -63,9 +67,50 @@ export default function ProductPage(product: Product) {
       <div className="h-auto lg:h-screen bg-[#f2f0ed] pt-14 lg:pt-24">
         <Wrapper className="flex flex-col lg:gap-20 lg:flex-row lg:justify-between">
           <Carousel
-            images={product.images}
+            showThumbs={false}
+            showStatus={false}
+            infiniteLoop
             className="lg:hidden max-w-lg mx-auto"
-          ></Carousel>
+            renderArrowNext={(
+              clickHandler: () => void,
+              hasNext: boolean,
+              label: string
+            ) => (
+              <div
+                onClick={clickHandler}
+                className="block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+              >
+                <FaChevronRight />
+              </div>
+            )}
+            renderArrowPrev={(
+              clickHandler: () => void,
+              hasNext: boolean,
+              label: string
+            ) => (
+              <div
+                onClick={clickHandler}
+                className="block absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+              >
+                <FaChevronLeft />
+              </div>
+            )}
+          >
+            {product.images.map((img, index) => (
+              <Image
+                key={index}
+                className={`duration-500 object-cover ${
+                  isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
+                }`}
+                onLoadingComplete={() => setIsLoading(false)}
+                src={img}
+                width={100}
+                height={100}
+                sizes={"100wh"}
+                alt={`img-${index + 1}`}
+              />
+            ))}
+          </Carousel>
 
           <div className="hidden lg:flex w-1/2">
             <div className="flex flex-col gap-3 mr-3">
@@ -120,7 +165,9 @@ export default function ProductPage(product: Product) {
               <option value="L">L</option>
               <option value="XL">XL</option>
             </select>
-            <p className="mb-10 text-lg first-letter:uppercase">{product.description}</p>
+            <p className="mb-10 text-lg first-letter:uppercase">
+              {product.description}
+            </p>
 
             <div className="flex flex-col gap-5 lg:max-w-xs">
               <button
@@ -168,7 +215,6 @@ export async function getStaticProps({ params }: any) {
   const product = await fetchProductById(params.id, params.category);
 
   console.log(product);
-  
 
   return {
     // Passed to the page component as props

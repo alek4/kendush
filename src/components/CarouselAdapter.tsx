@@ -21,8 +21,8 @@ export default function CarouselAdapter({
       className="group"
       autoPlay={autoSlide}
       showIndicators={false}
+      showThumbs={false}
       infiniteLoop
-      renderItem={(item: any, props) => <item.type {...item.props} {...props} />}
       renderArrowNext={(
         clickHandler: () => void,
         hasNext: boolean,
