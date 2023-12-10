@@ -3,7 +3,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["dummyimage.com", "picsum.photos"],
+    domains: ["dummyimage.com", "picsum.photos", "cdn.sanity.io"],
   },
   async headers() {
     return [

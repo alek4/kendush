@@ -7,9 +7,10 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CarouselAdapter from "./CarouselAdapter";
+import { urlForImage } from "../../sanity/lib/image";
 
 interface PhotoGalleryProps {
-  images: string[] | undefined;
+  images: any[] | undefined;
   setSelectedCategory: Dispatch<SetStateAction<string | undefined>>;
   currentCategory: string;
   categories: string[] | undefined;
@@ -42,7 +43,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
                   isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
                 }`}
                 onLoadingComplete={() => setIsLoading(false)}
-                src={img}
+                src={urlForImage(img.image)}
                 width={0}
                 height={0}
                 sizes={"100wh"}

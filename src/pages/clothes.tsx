@@ -4,7 +4,9 @@ import { Product, categories, Categories } from "@/utils/ProductType";
 import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
 
-export default function Clothes({ category }: any) {
+import { client } from '../../sanity/lib/client'
+
+export default function Clothes({ products }: any) {
   return (
     <div className="md:h-screen bg-[#f2f0ed] pt-24">
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
@@ -28,9 +30,21 @@ export default function Clothes({ category }: any) {
             </NextLink>
           </div>
         </div>
-        <GridProducts category={"clothes"}></GridProducts>
+        {/* <GridProducts category={"clothes"}></GridProducts> */}
+        <div className="grid grid-cols-2">
+          {products?.map((product: any) => product.name)}
+        </div>
         <NavBar></NavBar>
       </Wrapper>
     </div>
   );
+}
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  return {
+    props: {products}
+  }
 }

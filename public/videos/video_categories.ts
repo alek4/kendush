@@ -6,18 +6,19 @@ import { CategoryVideosType } from "@/utils/CategoryVideosType";
 
 export const videos: CategoryVideosType[] = [
     {
-        name: "natura",
+        name: "cat1",
         videos: [
-            "/videos/video-1.mp4",
-            "/videos/video-2.mp4",
+            "/videos/ABBACUP23.mp4",
+            "/videos/alma 2.mp4",
+            "/videos/BAD_ONE FINALE.mp4",
         ],
         thumbnail: "/videos/thumbnails/natura.png"
     },
     {
-        name: "feste",
+        name: "cat2",
         videos: [
-            "/videos/video-3.mp4",
-            "/videos/video-4.mp4",
+            "/videos/Eclissi-Alessandro Casillo.mp4",
+            "/videos/t1.mp4",
         ],
         thumbnail: "/videos/thumbnails/feste.png"
     }

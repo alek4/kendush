@@ -11,10 +11,20 @@ import { categories } from "@/utils/ProductType";
 import VideoGallery from "@/components/VideoGallery";
 import ReactPlayer from "react-player/lazy";
 import { CategoryImagesType } from "@/utils/CategoryImagesType";
+import { get } from "@vercel/edge-config";
+import { NextResponse } from "next/server";
+import { client } from "../../sanity/lib/client";
+import Image from "next/image";
+import { urlForImage } from "../../sanity/lib/image";
+import { buildFilePath, buildFileUrl } from "@sanity/asset-utils";
+import CarouselAdapter from "@/components/CarouselAdapter";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-export default function Home() {
+export default function Home({ videos, video_categories, images, image_categories }: any) {
   const [selectedCategory, setSelectedCategory] = useState<string>();
   const [selectedVideoCategory, setSelectedVideoCategory] = useState<string>();
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
@@ -38,8 +48,8 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl text-center">2
-            Kendu è un nome, un brand ma non solo questo. Da dove arriva lo
+          <p className="max-w-xl text-zinc-900 text-xl text-center">
+            2 Kendu è un nome, un brand ma non solo questo. Da dove arriva lo
             sappiamo: dall&apos;amore viscerale per l&apos;hip hop e da tutto
             ciò che lo circonda. Dove ci porterà lo scopriremo insieme a voi.
           </p>
@@ -50,22 +60,22 @@ export default function Home() {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-16">
             Galleria
           </h2>
+
           <h4 className="mb-8 uppercase text-gray-400 font-bold text-3xl">
             Foto
           </h4>
           <CategoryGrid
-            categories={images}
+            categories={image_categories}
             onCategoryClick={setSelectedCategory}
           ></CategoryGrid>
 
           {selectedCategory ? (
             <PhotoGallery
-              images={
-                images.find((category) => category.name === selectedCategory)
-                  ?.images
-              }
+              images={images.filter(
+                (img: any) => img.category_name === selectedCategory
+              )}
               currentCategory={selectedCategory}
-              categories={images.map((img) => img.name)}
+              categories={image_categories.map((img: any) => img.name)}
               setSelectedCategory={setSelectedCategory}
             />
           ) : null}
@@ -75,24 +85,17 @@ export default function Home() {
           </h4>
 
           <CategoryGrid
-            categories={videos.map((category) => {
-              return {
-                name: category.name,
-                images: [category.thumbnail],
-              };
-            })}
+            categories={video_categories}
             onCategoryClick={setSelectedVideoCategory}
           ></CategoryGrid>
 
           {selectedVideoCategory ? (
             <VideoGallery
-              videos={
-                videos.find(
-                  (category) => category.name === selectedVideoCategory
-                )?.videos
-              }
+              videos={videos.filter(
+                (video: any) => video.category_name === selectedVideoCategory
+              )}
               currentCategory={selectedVideoCategory}
-              categories={videos.map((video) => video.name)}
+              categories={video_categories.map((thumb: any) => thumb.name)}
               setSelectedCategory={setSelectedVideoCategory}
             />
           ) : null}
@@ -142,3 +145,21 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const query_video =
+    '*[_type == "video"]{name, "category_name": category->name, "fileURL": video.asset->url}';
+  const videos = await client.fetch(query_video);
+  const query_video_cat = '*[_type == "video_category"]';
+  const video_categories = await client.fetch(query_video_cat);
+
+  const query_image =
+    '*[_type == "gallery_image"]{name, "category_name": category->name, image}';
+  const images = await client.fetch(query_image);
+  const query_image_cat = '*[_type == "image_category"]';
+  const image_categories = await client.fetch(query_image_cat);
+
+  return {
+    props: { videos, video_categories, images, image_categories },
+  };
+};

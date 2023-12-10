@@ -7,7 +7,7 @@ import ReactPlayer from "react-player";
 import CarouselAdapter from "./CarouselAdapter";
 
 interface PhotoGalleryProps {
-  videos: string[] | undefined;
+  videos: any[] | undefined;
   setSelectedCategory: Dispatch<SetStateAction<string | undefined>>;
   currentCategory: string;
   categories: string[] | undefined;
@@ -19,6 +19,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
+  
   return videos ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -34,7 +35,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
             {videos.map((vid, index) => (
               <div key={index} className="shrink-0 basis-full">
                 <ReactPlayer
-                  url={vid}
+                  url={vid.fileURL}
                   key={index}
                   width={"100%"}
                   height={"auto"}

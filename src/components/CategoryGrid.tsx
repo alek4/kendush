@@ -1,9 +1,10 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import Image from "next/image";
 import { CategoryImagesType } from "@/utils/CategoryImagesType";
+import { urlForImage } from "../../sanity/lib/image";
 
 interface CategoryGridProps {
-  categories: CategoryImagesType[];
+  categories: any[];
   onCategoryClick: Dispatch<SetStateAction<string | undefined>>;
 }
 
@@ -20,7 +21,7 @@ const CategoryGrid: FC<CategoryGridProps> = ({
           }}
           key={i}
         >
-          <BlurImage key={i} image={category.images[0]} title={category.name} />
+          <BlurImage key={i} image={urlForImage(category.image)} title={category.name} />
         </div>
       ))}
     </div>
