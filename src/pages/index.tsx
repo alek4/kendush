@@ -1,7 +1,7 @@
 import NavBar from "@/components/NavBar";
 import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import CategoryGrid from "@/components/CategoryGrid";
 import PhotoGallery from "@/components/PhotoGallery";
@@ -21,10 +21,40 @@ import CarouselAdapter from "@/components/CarouselAdapter";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-export default function Home({ videos, video_categories, images, image_categories }: any) {
+export default function Home({ video_categories, image_categories }: any) {
   const [selectedCategory, setSelectedCategory] = useState<string>();
   const [selectedVideoCategory, setSelectedVideoCategory] = useState<string>();
-  const [isLoading, setIsLoading] = useState(true);
+
+  const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]);
+
+  const isInitialRender = useRef(-1);
+
+  useEffect(() => {
+    if (!selectedCategory) {
+      return;
+    }
+
+    const query_image = 
+      `*[_type == "gallery_image" && category->name == "${selectedCategory}"]{name, "category_name": category->name, image}`;
+    client.fetch(query_image).then((res) => {
+      setImages(res);
+    });
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (!selectedVideoCategory) {
+      return;
+    }
+
+    const query_video = 
+      `*[_type == "video"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
+    client.fetch(query_video).then((res) => {
+      console.log(res);
+      
+      setVideos(res);
+    });
+  }, [selectedVideoCategory]);
 
   return (
     <>
@@ -147,19 +177,19 @@ export default function Home({ videos, video_categories, images, image_categorie
 }
 
 export const getServerSideProps = async () => {
-  const query_video =
-    '*[_type == "video"]{name, "category_name": category->name, "fileURL": video.asset->url}';
-  const videos = await client.fetch(query_video);
+  // const query_video =
+  //   '*[_type == "video"]{name, "category_name": category->name, "fileURL": video.asset->url}';
+  // const videos = await client.fetch(query_video);
   const query_video_cat = '*[_type == "video_category"]';
   const video_categories = await client.fetch(query_video_cat);
 
-  const query_image =
-    '*[_type == "gallery_image"]{name, "category_name": category->name, image}';
-  const images = await client.fetch(query_image);
+  // const query_image =
+  //   '*[_type == "gallery_image"]{name, "category_name": category->name, image}';
+  // const images = await client.fetch(query_image);
   const query_image_cat = '*[_type == "image_category"]';
   const image_categories = await client.fetch(query_image_cat);
 
   return {
-    props: { videos, video_categories, images, image_categories },
+    props: { video_categories, image_categories },
   };
 };
