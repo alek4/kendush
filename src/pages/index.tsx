@@ -48,10 +48,8 @@ export default function Home({ video_categories, image_categories }: any) {
     }
 
     const query_video = 
-      `*[_type == "video"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
+      `*[_type == "video" && category->name == "${selectedVideoCategory}"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
     client.fetch(query_video).then((res) => {
-      console.log(res);
-      
       setVideos(res);
     });
   }, [selectedVideoCategory]);
