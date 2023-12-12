@@ -3,8 +3,10 @@ import NavBar from "@/components/NavBar";
 import { Product, categories, Categories } from "@/utils/ProductType";
 import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
+import Image from "next/image";
 
-import { client } from '../../sanity/lib/client'
+import { client } from "../../sanity/lib/client";
+import { urlForImage } from "../../sanity/lib/image";
 
 export default function Clothes({ products }: any) {
   return (
@@ -31,8 +33,25 @@ export default function Clothes({ products }: any) {
           </div>
         </div>
         {/* <GridProducts category={"clothes"}></GridProducts> */}
-        <div className="grid grid-cols-2">
-          {products?.map((product: any) => product.name)}
+        <div className="grid grid-cols-1 overflow-x-clip overflow-y-auto gap-5 mb-24 md:h-[calc(100vh-12rem-5rem)] sm:grid-cols-2">
+          {products.map((prod: any) => (
+            <NextLink
+              href={`/products/${prod.category}/${prod.slug.current}`}
+              key={prod.id}
+            >
+              <Image
+                className="aspect-1 object-cover"
+                src={urlForImage(prod.image[0])}
+                width={600}
+                height={600}
+                alt={prod.name}
+              />
+              <div className="flex flex-row justify-between mt-2 text-lg">
+                <p>{prod.name}</p>
+                <p>{prod.price} €</p>
+              </div>
+            </NextLink>
+          ))}
         </div>
         <NavBar></NavBar>
       </Wrapper>
@@ -41,10 +60,10 @@ export default function Clothes({ products }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product"]';
+  const query = '*[_type == "product" && category == "clothes"]';
   const products = await client.fetch(query);
 
   return {
-    props: {products}
-  }
-}
+    props: { products },
+  };
+};

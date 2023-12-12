@@ -34,6 +34,18 @@ export default {
         name: 'detail',
         title: 'Detail',
         type: 'string'
+    },
+    {
+        name: 'category',
+        title: "Category",
+        type: 'string',
+        options: {
+            list: [
+                { title: "Clothes", value: "clothes" },
+                { title: "Accessories", value: "accessories" },
+                { title: "ICANDO", value: "icando" },
+            ],
+        },
     }
     ]
 }
