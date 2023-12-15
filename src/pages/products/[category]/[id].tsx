@@ -19,11 +19,10 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 
 export default function ProductPage(product: any) {
   const { addItem } = useCart();
-  const [size, setSize] = useState("M");
   const router = useRouter();
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const { qty, incQty, decQty } = useStateContext();
+  const { qty, incQty, decQty, onAdd, size, setSize } = useStateContext();
 
   useEffect(() => {
     const { category } = router.query;
@@ -158,8 +157,10 @@ export default function ProductPage(product: any) {
             <div className="flex items-stretch gap-5 mb-8">
               <p className="font-bold my-auto text-xl">Taglia: </p>
               <select
-                onChange={(e) => setSize(e.target.value)}
-                value={size}
+                onChange={(e) => {
+                  setSize(e.target.value);
+                }}
+                value={product.size}
                 name="size"
                 id="size"
                 className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
@@ -173,11 +174,17 @@ export default function ProductPage(product: any) {
               <p className="font-bold my-auto text-xl ">Quantità: </p>
 
               <div className="rounded-md bg-neutral-300 flex items-center gap-5">
-                <div onClick={() => decQty()} className="rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center">
+                <div
+                  onClick={() => decQty()}
+                  className="rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                >
                   <FiMinus />
                 </div>
                 <p>{qty}</p>
-                <div onClick={() => incQty()} className="rounded-r-md hover:bg-neutral-400 h-full px-4 flex items-center">
+                <div
+                  onClick={() => incQty()}
+                  className="rounded-r-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                >
                   <FiPlus />
                 </div>
               </div>
@@ -187,9 +194,7 @@ export default function ProductPage(product: any) {
               <button
                 className="bg-white rounded-lg py-4 text-center"
                 onClick={() => {
-                  const item = { ...product, size: size };
-                  addItem(item);
-                  toast.success("Prodotto aggiunto al carrello!");
+                  onAdd({...product, size: size, _id: product._id + "+" + size}, qty);
                 }}
               >
                 AGGIUNGI AL CARRELLO
@@ -197,7 +202,6 @@ export default function ProductPage(product: any) {
             </div>
           </div>
           <NavBar></NavBar>
-          <Toaster />
         </Wrapper>
       </div>
     </>

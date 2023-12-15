@@ -1,32 +1,34 @@
 import NavBar from "@/components/NavBar";
 import { Wrapper } from "@/components/Wrapper";
 import { useCart } from "react-use-cart";
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Modal } from "@/components/Modal";
 import { Toaster, toast } from "react-hot-toast";
+import { useStateContext } from "../../context/StateContext";
+import { urlForImage } from "../../sanity/lib/image";
+import { FiMinus, FiPlus } from "react-icons/fi";
+import { TiDelete, TiDeleteOutline } from "react-icons/ti";
 
 export default function Cart() {
-  const { items, updateItemQuantity, isEmpty, cartTotal } = useCart();
+  const cartRef = useRef<any>();
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    incQty,
+    decQty,
+    toggleCartItemQuantity,
+    onRemove,
+  } = useStateContext();
 
-  const [allItems, setallItems] = useState<any>([{}]);
-  const [_isEmpty, setisEmpty] = useState<boolean>(true);
-
-  const [showModal, setShowModal] = useState(false)
-
-  useEffect(() => {
-    setallItems(JSON.parse(JSON.stringify(items)));
-  }, [items]);
-
-  useEffect(() => {
-    setisEmpty(JSON.parse(JSON.stringify(isEmpty)));
-  }, [isEmpty]);
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f2f0ed] py-24">
+    <div className="min-h-screen bg-[#f2f0ed] py-24" ref={cartRef}>
       <Wrapper className="">
         <h1 className="text-6xl font-bold mb-10 uppercase">Carrello</h1>
-        {_isEmpty ? (
+        {cartItems.length == 0 ? (
           <h1 className="text-xl font-bold uppercase text-zinc-400 text-center mt-10">
             Il tuo Carrello è vuoto, corri a fare shopping!
           </h1>
@@ -34,53 +36,80 @@ export default function Cart() {
           <div className="flex flex-col gap-5 max-w-4xl mx-auto">
             <div className="flex justify-end items-center">
               <h3 className="text-lg">
-                Totale: <span className="font-bold text-xl">{Math.round(cartTotal * 100) / 100} €</span>
+                Totale:{" "}
+                <span className="font-bold text-xl">{totalPrice} €</span>
               </h3>
-              <button onClick={() => setShowModal(true)} className="bg-green-600 text-white uppercase px-4 py-2 rounded-lg ml-5">
+              <button
+                onClick={() => setShowModal(true)}
+                className="bg-green-600 text-white uppercase px-4 py-2 rounded-lg ml-5"
+              >
                 ORDINA
               </button>
 
-              {showModal ? <Modal toast={toast} items={allItems} setShowModal={setShowModal} cartTotal={Math.round(cartTotal * 100) / 100} /> : null}
+              {showModal ? (
+                <Modal
+                  toast={toast}
+                  items={cartItems}
+                  setShowModal={setShowModal}
+                  cartTotal={Math.round(totalPrice * 100) / 100}
+                />
+              ) : null}
             </div>
-            {allItems.map((prod: any, i: any) => (
+            {cartItems.map((prod: any, i: number) => (
               <div key={i} className="flex">
                 <Image
-                  className="max-w-[150px] mr-8"
-                  src={prod.image}
-                  width={600}
-                  height={600}
-                  alt={prod.name}
+                  className="max-w-[200px] max-h-[200px] mr-8 aspect-1 object-cover"
+                  src={urlForImage(prod.image[0])}
+                  width={0}
+                  height={0}
+                  sizes="100wh"
+                  style={{ width: "100%", height: "auto" }} // optional
+                  alt={prod.slug}
                 />
-                <div className="flex flex-col justify-between py-4">
+                <div className="flex flex-col justify-between w-full pr-5 py-4">
                   <div>
-                    <h3 className="text-lg font-bold">{prod.name}</h3>
-                    <p>
-                      Taglia: <span>{prod.size}</span>
-                    </p>
-                    <span className="mr-1">Quantità: </span>
-                    <input
-                      min={0}
-                      className="w-14 bg-[#f2f0ed]"
-                      onClick={(e) => {
-                        updateItemQuantity(
-                          prod.id,
-                          parseInt(e.currentTarget.value)
-                        );
-                      }}
-                      type="number"
-                      name="qta"
-                      id="qta"
-                      defaultValue={prod.quantity}
-                    />
+                    <h3 className="text-3xl font-bold mb-5">{prod.name}</h3>
+                    <div className="flex gap-7 h-10 items-stretch">
+                      <p className="font-bold text-xl my-auto">
+                        Taglia: <span className="font-normal">{prod.size}</span>
+                      </p>
+                      <div className="flex">
+                        <p className="font-bold text-xl my-auto mr-3">
+                          Quantità:{" "}
+                        </p>
+                        <div className="rounded-md bg-neutral-300 flex items-center gap-5">
+                          <div
+                            onClick={() =>
+                              toggleCartItemQuantity(prod._id, "dec")
+                            }
+                            className="rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                          >
+                            <FiMinus />
+                          </div>
+                          <p>{prod.quantity}</p>
+                          <div
+                            onClick={() =>
+                              toggleCartItemQuantity(prod._id, "inc")
+                            }
+                            className="rounded-r-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                          >
+                            <FiPlus />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="">
-                    <span className="mr-1">Sub-totale: </span>
-                    <p className="mt-auto inline-block">
-                      {Math.round(
-                        (prod.quantity * prod.price + Number.EPSILON) * 100
-                      ) / 100}{" "}
-                      €
-                    </p>
+                  <div className="flex items-center justify-between mt-5 text-lg">
+                    <div>
+                      <span className="mr-1 italic">Sub-totale: </span>
+                      <p className="mt-auto inline-block">
+                        {prod.price * prod.quantity} €
+                      </p>
+                    </div>
+                    <TiDeleteOutline
+                      onClick={() => onRemove(prod)}
+                      className="text-red-500 text-4xl cursor-pointer"
+                    />
                   </div>
                 </div>
               </div>
@@ -89,7 +118,6 @@ export default function Cart() {
         )}
       </Wrapper>
       <NavBar></NavBar>
-      <Toaster></Toaster>
     </div>
   );
 }
