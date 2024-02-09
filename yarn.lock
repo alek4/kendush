@@ -1297,12 +1297,7 @@
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz"
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
-"@sanity/asset-utils@^1.2.5":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@sanity/asset-utils/-/asset-utils-1.3.0.tgz"
-  integrity sha512-uyIOtGA4Duf+68I3BSbYHY5P+WGftn3QtNJD2Pn7h9WPGYsSrWViIPebE9yRN8N0NHhYj+hDQXaMpVdjG7r+zA==
-
-"@sanity/asset-utils@^1.3.0":
+"@sanity/asset-utils@^1.2.5", "@sanity/asset-utils@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-1.3.0.tgz#6460cd993a2c24368a6308028f3bc57df91f131e"
   integrity sha512-uyIOtGA4Duf+68I3BSbYHY5P+WGftn3QtNJD2Pn7h9WPGYsSrWViIPebE9yRN8N0NHhYj+hDQXaMpVdjG7r+zA==
@@ -1835,6 +1830,13 @@
   version "18.0.11"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.11.tgz"
   integrity sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-image-magnify@^2.7.4":
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/@types/react-image-magnify/-/react-image-magnify-2.7.4.tgz#8b85dfe1b2955797b31c39799c2d152e13918e33"
+  integrity sha512-EzKC1eNf9OIO5JwvAoE9+XHcuJXeWqV9gutvO7Ae7L2rtQVZ3zd+08AREGI9mUZT5sQ4KHydjD1D5Bzwe/sJuA==
   dependencies:
     "@types/react" "*"
 
@@ -6056,6 +6058,11 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-medium-image-zoom@^5.1.9:
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.1.9.tgz#f98afe44c3d2b710c9d3513b3e8a6a5d57c21211"
+  integrity sha512-VOlqStMbztbHftQvl8wwD2oQvcNQjA9dUtNtIxZmwnP7BIcWfsDS5jRH7vJ/R94EtweiuCCAMnoTh7w5RkkJeg==
 
 react-player@^2.13.0:
   version "2.13.0"

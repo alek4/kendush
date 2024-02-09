@@ -39,14 +39,14 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
             {images.map((img, index) => (
               <Image
                 key={index}
-                className={`duration-500 object-contain ${
+                className={`duration-500 object-contain h-full aspect-[16/9] ${
                   isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
                 }`}
                 onLoadingComplete={() => setIsLoading(false)}
                 src={urlForImage(img.image)}
                 width={0}
                 height={0}
-                sizes={"100wh"}
+                sizes="100wh"
                 alt={`img-${index + 1}`}
               />
             ))}
@@ -54,7 +54,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
 
           <div
             onClick={() => setSelectedCategory(undefined)}
-            className="hidden lg:block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+            className="hidden lg:block absolute top-5 left-28 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
           >
             <IoMdClose></IoMdClose>
           </div>

@@ -30,7 +30,7 @@ export default function CarouselAdapter({
       ) => (
         <div
           onClick={clickHandler}
-          className="group-hover:block hidden absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+          className="group-hover:block hidden absolute top-[50%] -translate-x-0 translate-y-[-50%] right-28 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
         >
           <FaChevronRight />
         </div>
@@ -42,7 +42,7 @@ export default function CarouselAdapter({
       ) => (
         <div
           onClick={clickHandler}
-          className="group-hover:block hidden absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+          className="group-hover:block hidden absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-28 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
         >
           <FaChevronLeft />
         </div>

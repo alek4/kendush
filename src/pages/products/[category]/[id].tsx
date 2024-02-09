@@ -16,9 +16,10 @@ import { client } from "../../../../sanity/lib/client";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { useStateContext } from "../../../../context/StateContext";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 export default function ProductPage(product: any) {
-  const { addItem } = useCart();
   const router = useRouter();
 
   const [selectedImage, setSelectedImage] = useState(0);
@@ -27,38 +28,6 @@ export default function ProductPage(product: any) {
   useEffect(() => {
     const { category } = router.query;
   }, []);
-
-  const [isZoomed, setIsZoomed] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsZoomed(true);
-  };
-
-  const handleMouseLeave = (e: any) => {
-    const image = e.target;
-
-    setIsZoomed(false);
-
-    image.style.backgroundPosition = `${0}% ${0}%`;
-    image.style.backgroundSize = `100%`;
-  };
-
-  const handleMouseMove = (e: any) => {
-    if (isZoomed) {
-      const image = e.target;
-      const zoomLevel = 3; // Adjust the zoom level as needed
-
-      const offsetX = e.nativeEvent.offsetX;
-      const offsetY = e.nativeEvent.offsetY;
-      const x = (offsetX / image.offsetWidth) * 100;
-      const y = (offsetY / image.offsetHeight) * 100;
-
-      const backgroundPosition = `${x}% ${y}%`;
-
-      image.style.backgroundPosition = backgroundPosition;
-      image.style.backgroundSize = `${zoomLevel * 100}%`;
-    }
-  };
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -108,23 +77,17 @@ export default function ProductPage(product: any) {
           </Carousel>
 
           <div className="hidden lg:flex w-1/3 flex-col gap-5">
-            <div
-              className="relative aspect-1 object-cover w-full h-fit"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
-            >
-              <div
-                className={`bg-cover bg-center w-full h-full transition-transform duration-300 ${
-                  isZoomed ? "transform scale-150" : ""
-                }`}
-                style={{
-                  backgroundImage: `url(${urlForImage(
-                    product.image[selectedImage]
-                  )})`,
-                }}
+            <Zoom>
+              <Image
+                className="aspect-1 object-cover w-full h-fit"
+                src={urlForImage(product.image[selectedImage])}
+                alt={product.slug.current}
+                style={{ width: "100%", height: "auto" }} // optional
+                sizes="100wh"
+                width={0}
+                height={0}
               />
-            </div>
+            </Zoom>
 
             <div className="flex flex-row gap-3 mr-3">
               {product.image.map((img: any, i: number) => (
@@ -194,7 +157,10 @@ export default function ProductPage(product: any) {
               <button
                 className="bg-white rounded-lg py-4 text-center"
                 onClick={() => {
-                  onAdd({...product, size: size, _id: product._id + "+" + size}, qty);
+                  onAdd(
+                    { ...product, size: size, _id: product._id + "+" + size },
+                    qty
+                  );
                 }}
               >
                 AGGIUNGI AL CARRELLO

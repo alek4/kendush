@@ -1,25 +1,13 @@
+import CategoryGrid from "@/components/CategoryGrid";
 import NavBar from "@/components/NavBar";
+import PhotoGallery from "@/components/PhotoGallery";
+import VideoGallery from "@/components/VideoGallery";
 import { Wrapper } from "@/components/Wrapper";
 import NextLink from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
-import CategoryGrid from "@/components/CategoryGrid";
-import PhotoGallery from "@/components/PhotoGallery";
-import { images } from "../../public/images/image_categories";
-import { videos } from "../../public/videos/video_categories";
-import { categories } from "@/utils/ProductType";
-import VideoGallery from "@/components/VideoGallery";
-import ReactPlayer from "react-player/lazy";
-import { CategoryImagesType } from "@/utils/CategoryImagesType";
-import { get } from "@vercel/edge-config";
-import { NextResponse } from "next/server";
-import { client } from "../../sanity/lib/client";
-import Image from "next/image";
-import { urlForImage } from "../../sanity/lib/image";
-import { buildFilePath, buildFileUrl } from "@sanity/asset-utils";
-import CarouselAdapter from "@/components/CarouselAdapter";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { client } from "../../sanity/lib/client";
 
 export default function Home({ video_categories, image_categories }: any) {
   const [selectedCategory, setSelectedCategory] = useState<string>();
