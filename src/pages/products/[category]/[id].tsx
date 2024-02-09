@@ -36,7 +36,7 @@ export default function ProductPage(product: any) {
       <Head>
         <title>{`KENDUSH | ${product.name}`}</title>
       </Head>
-      <div className="h-auto lg:h-screen bg-[#f2f0ed] pt-14 lg:pt-24">
+      <div className="h-full lg:h-screen bg-[#f2f0ed] pt-14 lg:pt-24">
         <Wrapper className="flex flex-col lg:gap-20 lg:flex-row">
           <Carousel
             showThumbs={false}
@@ -117,38 +117,41 @@ export default function ProductPage(product: any) {
               <p className="text-lg first-letter:uppercase">{product.detail}</p>
             </div>
             <p className="font-bold text-3xl mb-10">{product.price} €</p>
-            <div className="flex items-stretch gap-5 mb-8">
-              <p className="font-bold my-auto text-xl">Taglia: </p>
-              <select
-                onChange={(e) => {
-                  setSize(e.target.value);
-                }}
-                value={product.size}
-                name="size"
-                id="size"
-                className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
-              >
-                <option value="M">M</option>
-                <option value="S">S</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-              </select>
-
-              <p className="font-bold my-auto text-xl ">Quantità: </p>
-
-              <div className="rounded-md bg-neutral-300 flex items-center gap-5">
-                <div
-                  onClick={() => decQty()}
-                  className="rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center"
+            <div className="flex-col md:flex md:flex-row items-stretch gap-5 mb-8">
+              <div className="mb-5 md:mb-0 flex items-stretch gap-5">
+                <p className="font-bold my-auto text-xl">Taglia: </p>
+                <select
+                  onChange={(e) => {
+                    setSize(e.target.value);
+                  }}
+                  value={product.size}
+                  name="size"
+                  id="size"
+                  className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
                 >
-                  <FiMinus />
-                </div>
-                <p>{qty}</p>
-                <div
-                  onClick={() => incQty()}
-                  className="rounded-r-md hover:bg-neutral-400 h-full px-4 flex items-center"
-                >
-                  <FiPlus />
+                  <option value="M">M</option>
+                  <option value="S">S</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <div className="flex h-12 md:h-auto items-stretch gap-5">
+                <p className="font-bold my-auto text-xl ">Quantità: </p>
+                <div className="rounded-md bg-neutral-300 flex items-center gap-5">
+                  <div
+                    onClick={() => decQty()}
+                    className="rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                  >
+                    <FiMinus />
+                  </div>
+                  <p>{qty}</p>
+                  <div
+                    onClick={() => incQty()}
+                    className="rounded-r-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                  >
+                    <FiPlus />
+                  </div>
                 </div>
               </div>
             </div>
