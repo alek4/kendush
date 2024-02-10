@@ -9,7 +9,7 @@ export default function collections({}: Props) {
   return (
     <div
       id="collection"
-      className="md:h-screen pt-24 pb-24 bg-[url(/images/image2.jpg)] bg-center bg-cover"
+      className="h-screen pt-24 pb-24 bg-[url(/images/image2.jpg)] bg-center bg-cover"
     >
       <Wrapper className="">
         <div className="mb-16">
