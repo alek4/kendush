@@ -56,7 +56,7 @@ export default function Cart() {
               ) : null}
             </div>
             {cartItems.map((prod: any, i: number) => (
-              <div key={i} className="flex">
+              <div key={i} className="flex items-center">
                 <Image
                   className="max-w-[200px] max-h-[200px] mr-8 aspect-1 object-cover"
                   src={urlForImage(prod.image[0])}
@@ -68,16 +68,16 @@ export default function Cart() {
                 />
                 <div className="flex flex-col justify-between w-full pr-5 py-4">
                   <div>
-                    <h3 className="text-3xl font-bold mb-5">{prod.name}</h3>
-                    <div className="flex gap-7 h-10 items-stretch">
+                    <h3 className="text-xl md:text-3xl font-bold mb-5">{prod.name}</h3>
+                    <div className="flex flex-col md:flex-row gap-3 md:gap-7 h-10 items-stretch">
                       <p className="font-bold text-xl my-auto">
                         Taglia: <span className="font-normal">{prod.size}</span>
                       </p>
                       <div className="flex">
-                        <p className="font-bold text-xl my-auto mr-3">
+                        <p className="hidden md:inline-block font-bold text-xl my-auto mr-3">
                           Quantità:{" "}
                         </p>
-                        <div className="rounded-md bg-neutral-300 flex items-center gap-5">
+                        <div className="h-10 md:h-auto rounded-md bg-neutral-300 flex items-center gap-5">
                           <div
                             onClick={() =>
                               toggleCartItemQuantity(prod._id, "dec")
@@ -99,9 +99,9 @@ export default function Cart() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-5 text-lg">
+                  <div className="mt-16 flex items-center justify-between md:mt-5 text-lg">
                     <div>
-                      <span className="mr-1 italic">Sub-totale: </span>
+                      <span className="hidden md:inline-block mr-1 italic">Sub-totale: </span>
                       <p className="mt-auto inline-block">
                         {prod.price * prod.quantity} €
                       </p>
