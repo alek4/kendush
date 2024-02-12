@@ -121,7 +121,7 @@ export default function Home({ video_categories, image_categories }: any) {
         <Wrapper className="flex flex-col justify-center items-center">
           <NextLink
             href="/collections"
-            className="flex items-center group uppercase text-yellow-400 font-bold text-5xl text-center"
+            className="flex items-center group uppercase text-yellow-400 font-bold text-4xl md:text-5xl text-center"
           >
             Fai un salto nel nostro shop!
             <span className="hidden  md:group-hover:block ml-5 text-4xl">
@@ -132,7 +132,7 @@ export default function Home({ video_categories, image_categories }: any) {
       </div>
       <div id="contact" className="md:h-screen pt-24 pb-24 bg-zinc-500">
         <Wrapper className="flex flex-col justify-between gap-20 lg:flex-row">
-          <div className="uppercase font-bold text-6xl text-white">
+          <div className="uppercase font-bold text-4xl md:text-6xl text-white">
             <h1>fatti sentire.</h1>
             <h1>contattaci!</h1>
           </div>
