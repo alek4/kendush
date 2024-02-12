@@ -53,7 +53,7 @@ export default function Home({ video_categories, image_categories }: any) {
             <h1 className="uppercase text-blue-600 font-bold text-6xl">
               k per l&apos;asso.
             </h1>
-            <h3 className="uppercase text-red-500 font-bold text-3xl">
+            <h3 className="uppercase text-red-500 font-bold text-2xl md:text-3xl">
               get yourself a piece of kendu
             </h3>
           </div>
