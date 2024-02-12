@@ -49,7 +49,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
 
           <div
             onClick={() => setSelectedCategory(undefined)}
-            className="absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+            className="hidden lg:block absolute top-5 left-28 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
           >
             <IoMdClose></IoMdClose>
           </div>

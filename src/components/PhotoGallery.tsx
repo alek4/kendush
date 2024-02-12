@@ -33,13 +33,13 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         }
       }}
     >
-      <Wrapper className="relative flex flex-col gap-5">
+      <Wrapper className="w-screen md:w-10/12 relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
           <CarouselAdapter>
             {images.map((img, index) => (
               <Image
                 key={index}
-                className={`duration-500 object-contain h-full aspect-[16/9] ${
+                className={`duration-500 object-contain h-full w-screen aspect-[16/9] ${
                   isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
                 }`}
                 onLoadingComplete={() => setIsLoading(false)}
