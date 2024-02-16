@@ -46,7 +46,7 @@ export default function Home({ video_categories, image_categories }: any) {
     <>
       <div
         id="home"
-        className={`h-screen bg-[url(/images/image1.webp)] bg-center bg-cover pt-24 relative`}
+        className={`h-screen bg-[url(https://cdn.sanity.io/images/6rsophlq/production/da48386c8cda1985a41aa58e4f4d45ec3d047609-2048x1365.jpg)] bg-center bg-cover pt-24 relative`}
       >
         <Wrapper className="">
           <div className="absolute bottom-40">
