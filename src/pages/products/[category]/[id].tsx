@@ -114,7 +114,7 @@ export default function ProductPage(product: any) {
             </h1>
             <div className="mb-10">
               <p className="font-bold text-xl mb-2">Dettagli:</p>
-              <p className="text-lg first-letter:uppercase">{product.detail}</p>
+              <pre className="text-lg first-letter:uppercase">{product.detail}</pre>
             </div>
             <p className="font-bold text-3xl mb-10">{product.price} €</p>
             <div className="flex-col md:flex md:flex-row items-stretch gap-5 mb-8">

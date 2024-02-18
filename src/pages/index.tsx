@@ -23,8 +23,7 @@ export default function Home({ video_categories, image_categories }: any) {
       return;
     }
 
-    const query_image = 
-      `*[_type == "gallery_image" && category->name == "${selectedCategory}"]{name, "category_name": category->name, image}`;
+    const query_image = `*[_type == "gallery_image" && category->name == "${selectedCategory}"]{name, "category_name": category->name, image}`;
     client.fetch(query_image).then((res) => {
       setImages(res);
     });
@@ -35,8 +34,7 @@ export default function Home({ video_categories, image_categories }: any) {
       return;
     }
 
-    const query_video = 
-      `*[_type == "video" && category->name == "${selectedVideoCategory}"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
+    const query_video = `*[_type == "video" && category->name == "${selectedVideoCategory}"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
     client.fetch(query_video).then((res) => {
       setVideos(res);
     });
@@ -64,10 +62,13 @@ export default function Home({ video_categories, image_categories }: any) {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl text-center">
-            2 Kendu è un nome, un brand ma non solo questo. Da dove arriva lo
-            sappiamo: dall&apos;amore viscerale per l&apos;hip hop e da tutto
-            ciò che lo circonda. Dove ci porterà lo scopriremo insieme a voi.
+          <p className="max-w-xl text-zinc-900 text-xl text-justify">
+            Kendu è un viaggio indimenticabile sui binari della creatività
+            Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
+            branding…esplorando ed esaudendo ogni vostra singola esigenza. Da
+            qualche anno abbiamo deciso di aprire uno shop-online. K è il
+            marchio. "K per l'asso", perchè crediamo che ognuno di voi ha
+            qualità eccezionali, unica nel suo genere.
           </p>
         </Wrapper>
       </div>
@@ -142,16 +143,16 @@ export default function Home({ video_categories, image_categories }: any) {
             </h5>
             <ul className="text-lg uppercase">
               <li>
-                <NextLink href={""}>email</NextLink>
+                <NextLink href={"mailto:bolankenduyvon@gmail.com"}>email</NextLink>
               </li>
               <li>
-                <NextLink href={""}>instagram</NextLink>
+                <NextLink href={"https://www.instagram.com/kendu_official/"}>instagram</NextLink>
               </li>
               <li>
-                <NextLink href={""}>facebook</NextLink>
+                <NextLink href={"https://www.facebook.com/yvon.bolankendu.3/"}>facebook</NextLink>
               </li>
               <li>
-                <NextLink href={""}>youtube</NextLink>
+                <NextLink href={"https://www.youtube.com/channel/UCHqg3Se8c_s9s_f6s9eHzlw?view_as=subscriber"}>youtube</NextLink>
               </li>
             </ul>
           </div>

@@ -33,7 +33,7 @@ export default {
     {
         name: 'detail',
         title: 'Detail',
-        type: 'string'
+        type: 'text'
     },
     {
         name: 'category',

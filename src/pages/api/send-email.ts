@@ -15,8 +15,8 @@ export default async function handler(
   console.log(data.firstName);
 
   await sendEmail({
-    to: "alexssander488@gmail.com",
-    subject: "Welcome to NextAPI",
+    to: "bolankenduyvon@gmail.com",
+    subject: "Nuovo Ordine Kendush",
     html: render(OrderTemplate(data)),
   });
 

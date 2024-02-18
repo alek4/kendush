@@ -9,6 +9,7 @@ export default async function fetchProductsByCategory(
     );
     if (response.ok) {
       const products = await response.json();
+      console.log(category, products);
 
       return products;
     }

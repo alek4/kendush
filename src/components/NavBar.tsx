@@ -36,22 +36,17 @@ const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
                 </NextLink>) : null}
               </div>
               <div className="grid grid-cols-2 gap-3 md:flex">
-                <NextLink href="/">
+                <NextLink href="https://www.facebook.com/yvon.bolankendu.3/">
                   <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaFacebook></FaFacebook>
                   </li>
                 </NextLink>
-                <NextLink href="/">
+                <NextLink href="https://www.instagram.com/kendu_official/">
                   <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaInstagram></FaInstagram>
                   </li>
                 </NextLink>
-                <NextLink href="/">
-                  <li className={`${buttonStyle} py-4 text-2xl`}>
-                    <FaWhatsapp></FaWhatsapp>
-                  </li>
-                </NextLink>
-                <NextLink href="/">
+                <NextLink href="https://www.youtube.com/channel/UCHqg3Se8c_s9s_f6s9eHzlw?view_as=subscriber">
                   <li className={`${buttonStyle} py-4 text-2xl`}>
                     <FaYoutube></FaYoutube>
                   </li>
