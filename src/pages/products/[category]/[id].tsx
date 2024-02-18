@@ -80,8 +80,8 @@ export default function ProductPage(product: any) {
             <Zoom>
               <Image
                 className="aspect-1 object-cover w-full h-fit"
-                src={urlForImage(product?.image[selectedImage])}
-                alt={product?.slug.current}
+                src={product.image == undefined ? "" : urlForImage(product?.image[selectedImage])}
+                alt={product?.slug?.current}
                 style={{ width: "100%", height: "auto" }} // optional
                 sizes="100wh"
                 width={0}
@@ -202,7 +202,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const query = `*[_type == "product" && slug.current == "${params.id}" && category == "${params.category}"]`;
+  const query = `*[_type == "product" && slug.current == "${params?.id}" && category == "${params?.category}"]`;
 
   const product = await client.fetch(query);
 
