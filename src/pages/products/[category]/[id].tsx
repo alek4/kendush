@@ -60,7 +60,7 @@ export default function ProductPage(product: any) {
               </div>
             )}
           >
-            {product.image.map((img: any, index: any) => (
+            {product.image?.map((img: any, index: any) => (
               <Image
                 key={index}
                 className={`duration-500 object-cover aspect-1 ${
@@ -90,7 +90,7 @@ export default function ProductPage(product: any) {
             </Zoom>
 
             <div className="flex flex-row gap-3 mr-3">
-              {product.image.map((img: any, i: number) => (
+              {product.image?.map((img: any, i: number) => (
                 <Image
                   onClick={() => setSelectedImage(i)}
                   key={i}
@@ -191,12 +191,9 @@ export async function getStaticPaths() {
   }
 
   // Generate paths based on the products
-  var paths = [];
-  if (products != undefined) {
-    paths = products.map((product: any) => ({
-      params: { id: product.slug.current, category: product.category },
-    }));
-  }
+  const paths = products?.map((product: any) => ({
+    params: { id: product.slug.current, category: product.category },
+  }));
 
   return {
     paths,
