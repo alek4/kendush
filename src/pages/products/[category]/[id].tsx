@@ -34,7 +34,7 @@ export default function ProductPage(product: any) {
   return (
     <>
       <Head>
-        <title>{`KENDUSH | ${product.name}`}</title>
+        <title>{`KENDUSH | ${product?.name}`}</title>
       </Head>
       <div className="h-full lg:h-screen bg-[#f2f0ed] pt-14 lg:pt-24">
         <Wrapper className="flex flex-col lg:gap-20 lg:flex-row">
@@ -80,8 +80,8 @@ export default function ProductPage(product: any) {
             <Zoom>
               <Image
                 className="aspect-1 object-cover w-full h-fit"
-                src={urlForImage(product.image[selectedImage])}
-                alt={product.slug.current}
+                src={urlForImage(product?.image[selectedImage])}
+                alt={product?.slug.current}
                 style={{ width: "100%", height: "auto" }} // optional
                 sizes="100wh"
                 width={0}
@@ -110,15 +110,15 @@ export default function ProductPage(product: any) {
 
           <div className="mb-32 mt-10 md:mt-5 lg:w-1/2 lg:mb-auto text-zinc-900">
             <h1 className="text-5xl md:text-6xl mb-7 font-bold">
-              {product.name}
+              {product?.name}
             </h1>
             <div className="mb-10">
               <p className="font-bold text-xl mb-2">Dettagli:</p>
               <pre className="text-lg first-letter:uppercase">
-                {product.detail}
+                {product?.detail}
               </pre>
             </div>
-            <p className="font-bold text-3xl mb-10">{product.price} €</p>
+            <p className="font-bold text-3xl mb-10">{product?.price} €</p>
             <div className="flex-col md:flex md:flex-row items-stretch gap-5 mb-8">
               <div className="mb-5 md:mb-0 flex items-stretch gap-5">
                 <p className="font-bold my-auto text-xl">Taglia: </p>
@@ -126,7 +126,7 @@ export default function ProductPage(product: any) {
                   onChange={(e) => {
                     setSize(e.target.value);
                   }}
-                  value={product.size}
+                  value={product?.size}
                   name="size"
                   id="size"
                   className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
@@ -163,7 +163,7 @@ export default function ProductPage(product: any) {
                 className="bg-white rounded-lg py-4 text-center"
                 onClick={() => {
                   onAdd(
-                    { ...product, size: size, _id: product._id + "+" + size },
+                    { ...product, size: size, _id: product?._id + "+" + size },
                     qty
                   );
                 }}
@@ -192,7 +192,7 @@ export async function getStaticPaths() {
 
   // Generate paths based on the products
   const paths = products?.map((product: any) => ({
-    params: { id: product.slug.current, category: product.category },
+    params: { id: product?.slug.current, category: product?.category },
   }));
 
   return {
