@@ -114,7 +114,9 @@ export default function ProductPage(product: any) {
             </h1>
             <div className="mb-10">
               <p className="font-bold text-xl mb-2">Dettagli:</p>
-              <pre className="text-lg first-letter:uppercase">{product.detail}</pre>
+              <pre className="text-lg first-letter:uppercase">
+                {product.detail}
+              </pre>
             </div>
             <p className="font-bold text-3xl mb-10">{product.price} €</p>
             <div className="flex-col md:flex md:flex-row items-stretch gap-5 mb-8">
@@ -189,9 +191,12 @@ export async function getStaticPaths() {
   }
 
   // Generate paths based on the products
-  const paths = products.map((product: any) => ({
-    params: { id: product.slug.current, category: product.category },
-  }));
+  var paths = [];
+  if (products != undefined) {
+    paths = products.map((product: any) => ({
+      params: { id: product.slug.current, category: product.category },
+    }));
+  }
 
   return {
     paths,
