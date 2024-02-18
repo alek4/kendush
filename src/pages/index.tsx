@@ -65,9 +65,9 @@ export default function Home({ video_categories, image_categories }: any) {
           <p className="max-w-xl text-zinc-900 text-xl text-justify">
             Kendu è un viaggio indimenticabile sui binari della creatività
             Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
-            branding…esplorando ed esaudendo ogni vostra singola esigenza. Da
+            branding... esplorando ed esaudendo ogni vostra singola esigenza. Da
             qualche anno abbiamo deciso di aprire uno shop-online. K è il
-            marchio. "K per l'asso", perchè crediamo che ognuno di voi ha
+            marchio. &quot;K per l&apos;asso&quot;, perchè crediamo che ognuno di voi ha
             qualità eccezionali, unica nel suo genere.
           </p>
         </Wrapper>
