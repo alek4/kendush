@@ -114,7 +114,7 @@ export default function ProductPage(product: any) {
             </h1>
             <div className="mb-10">
               <p className="font-bold text-xl mb-2">Dettagli:</p>
-              <pre className="text-lg first-letter:uppercase">
+              <pre className="text-lg first-letter:uppercase whitespace-pre-wrap ">
                 {product?.detail}
               </pre>
             </div>
