@@ -39,7 +39,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
             {images.map((img, index) => (
               <Image
                 key={index}
-                className={`duration-500 object-contain h-full w-screen aspect-[16/9] ${
+                className={`duration-500 object-cover aspect-[16/9] ${
                   isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
                 }`}
                 onLoadingComplete={() => setIsLoading(false)}

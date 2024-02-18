@@ -33,7 +33,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         <div className="w-full mx-auto relative">
           <CarouselAdapter>
             {videos.map((vid, index) => (
-              <div key={index} className="shrink-0 basis-full">
+              <div key={index} className="duration-500 object-cover aspect-[16/9] shrink-0 basis-full">
                 <ReactPlayer
                   url={vid.fileURL}
                   key={index}
