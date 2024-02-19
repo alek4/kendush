@@ -62,21 +62,25 @@ export default function Home({ video_categories, image_categories }: any) {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl text-left">
-            Kendu è un viaggio indimenticabile sui binari della creatività.
-          </p>
-          <p className="max-w-xl text-zinc-900 text-xl text-left">
-            Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
-            branding... esplorando ed esaudendo ogni vostra singola esigenza.
-          </p>
-          <p className="max-w-xl text-zinc-900 text-xl text-left">
-            Da qualche anno abbiamo deciso di aprire uno shop-online. K è il
-            marchio.
-          </p>
-          <p className="max-w-xl text-zinc-900 text-xl text-left">
-            &quot;K per l&apos;asso&quot;, perchè crediamo che ognuno di voi ha
-            qualità eccezionali, unica nel suo genere.
-          </p>
+          <div className="flex flex-col justify-start">
+            <p className="max-w-xl text-zinc-900 text-xl text-left">
+              Kendu è un viaggio indimenticabile sui binari della creatività.
+            </p>
+            <p className="max-w-xl text-zinc-900 text-xl text-left">
+              Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
+              branding... esplorando ed esaudendo ogni vostra singola esigenza.
+            </p>
+            <p className="max-w-xl text-zinc-900 text-xl text-left">
+              Da qualche anno abbiamo deciso di aprire uno shop-online.
+            </p>
+            <p className="max-w-xl text-zinc-900 text-xl text-left">
+              K è il marchio.
+            </p>
+            <p className="max-w-xl text-zinc-900 text-xl text-left">
+              &quot;K per l&apos;asso&quot;, perchè crediamo che ognuno di voi ha
+              qualità eccezionali, unica nel suo genere.
+            </p>
+          </div>
         </Wrapper>
       </div>
       <div id="gallery" className="pt-24 pb-24">
