@@ -31,7 +31,7 @@ export default function collections({}: Props) {
             className="bg-white rounded-lg py-5 w-full text-center uppercase "
             href={"/accessories"}
           >
-            accessori
+            accessories
           </NextLink>
           <NextLink
             className="bg-white rounded-lg py-5 w-full text-center uppercase "

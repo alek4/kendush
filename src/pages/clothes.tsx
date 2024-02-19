@@ -15,14 +15,14 @@ export default function Clothes({ products }: any) {
         <div className="mb-20 md:mb-auto text-zinc-900">
           <h1 className="text-6xl font-bold mb-5">FELPE & T-SHIRT</h1>
           <p className="text-2xl mb-10">
-            POSSIBILITA DI PERSONALIZZARE TUTTI I NOSTRI DESIGN CON IL TUO NOME
+            POSSIBILIT&Agrave; DI PERSONALIZZARE TUTTI I NOSTRI DESIGN CON IL TUO NOME
           </p>
           <div className="flex flex-col gap-5 md:max-w-xs">
             <NextLink
               className="bg-white rounded-full py-4 text-center"
               href="/accessories"
             >
-              ACCESSORI
+              ACCESSORIES
             </NextLink>
             <NextLink
               className="bg-white rounded-full py-4 text-center"

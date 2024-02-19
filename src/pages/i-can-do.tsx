@@ -40,7 +40,7 @@ export default function ICanDo({ products }: any) {
               className="bg-white rounded-full py-4 text-center"
               href="/accessories"
             >
-              ACCESSORI
+              ACCESSORIES
             </NextLink>
           </div>
         </div>

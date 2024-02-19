@@ -44,11 +44,11 @@ export default function Home({ video_categories, image_categories }: any) {
     <>
       <div
         id="home"
-        className={`h-screen bg-[url(https://cdn.sanity.io/images/6rsophlq/production/76fa63e85b098a9cc84857454a326cfbcbf9e9a6-4069x2643.jpg)] bg-center bg-cover pt-24 relative`}
+        className={`h-screen bg-[url(https://cdn.sanity.io/images/6rsophlq/production/52e84247bd8cca6c51950c0d65ed1d9cc1a57180-6000x4000.jpg)] bg-center bg-cover pt-24 relative`}
       >
         <Wrapper className="">
           <div className="absolute bottom-40">
-            <h1 className="uppercase text-gray-100 font-bold text-6xl">
+            <h1 className="uppercase text-gray-100 font-bold text-5xl md:text-6xl">
               k per l&apos;asso.
             </h1>
             <h3 className="uppercase text-yellow-400 font-bold text-2xl md:text-3xl">
@@ -62,12 +62,19 @@ export default function Home({ video_categories, image_categories }: any) {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl text-center">
+          <p className="max-w-xl text-zinc-900 text-xl text-left">
             Kendu è un viaggio indimenticabile sui binari della creatività.
+          </p>
+          <p className="max-w-xl text-zinc-900 text-xl text-left">
             Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
-            branding... esplorando ed esaudendo ogni vostra singola esigenza. Da
-            qualche anno abbiamo deciso di aprire uno shop-online. K è il
-            marchio. &quot;K per l&apos;asso&quot;, perchè crediamo che ognuno di voi ha
+            branding... esplorando ed esaudendo ogni vostra singola esigenza.
+          </p>
+          <p className="max-w-xl text-zinc-900 text-xl text-left">
+            Da qualche anno abbiamo deciso di aprire uno shop-online. K è il
+            marchio.
+          </p>
+          <p className="max-w-xl text-zinc-900 text-xl text-left">
+            &quot;K per l&apos;asso&quot;, perchè crediamo che ognuno di voi ha
             qualità eccezionali, unica nel suo genere.
           </p>
         </Wrapper>
@@ -143,16 +150,28 @@ export default function Home({ video_categories, image_categories }: any) {
             </h5>
             <ul className="text-lg uppercase">
               <li>
-                <NextLink href={"mailto:bolankenduyvon@gmail.com"}>email</NextLink>
+                <NextLink href={"mailto:bolankenduyvon@gmail.com"}>
+                  email
+                </NextLink>
               </li>
               <li>
-                <NextLink href={"https://www.instagram.com/kendu_official/"}>instagram</NextLink>
+                <NextLink href={"https://www.instagram.com/kendu_official/"}>
+                  instagram
+                </NextLink>
               </li>
               <li>
-                <NextLink href={"https://www.facebook.com/yvon.bolankendu.3/"}>facebook</NextLink>
+                <NextLink href={"https://www.facebook.com/yvon.bolankendu.3/"}>
+                  facebook
+                </NextLink>
               </li>
               <li>
-                <NextLink href={"https://www.youtube.com/channel/UCHqg3Se8c_s9s_f6s9eHzlw?view_as=subscriber"}>youtube</NextLink>
+                <NextLink
+                  href={
+                    "https://www.youtube.com/channel/UCHqg3Se8c_s9s_f6s9eHzlw?view_as=subscriber"
+                  }
+                >
+                  youtube
+                </NextLink>
               </li>
             </ul>
           </div>
