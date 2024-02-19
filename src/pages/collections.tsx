@@ -13,10 +13,10 @@ export default function collections({}: Props) {
     >
       <Wrapper className="">
         <div className="mb-16">
-          <h2 className="uppercase text-blue-600 font-bold text-5xl">
+          <h2 className="uppercase text-gray-100 font-bold text-5xl">
             collezione
           </h2>
-          <h3 className="uppercase text-red-500 font-bold text-3xl">
+          <h3 className="uppercase text-yellow-400 font-bold text-3xl">
             get yourself a piece of kendu
           </h3>
         </div>

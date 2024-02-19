@@ -44,14 +44,14 @@ export default function Home({ video_categories, image_categories }: any) {
     <>
       <div
         id="home"
-        className={`h-screen bg-[url(https://cdn.sanity.io/images/6rsophlq/production/da48386c8cda1985a41aa58e4f4d45ec3d047609-2048x1365.jpg)] bg-center bg-cover pt-24 relative`}
+        className={`h-screen bg-[url(https://cdn.sanity.io/images/6rsophlq/production/76fa63e85b098a9cc84857454a326cfbcbf9e9a6-4069x2643.jpg)] bg-center bg-cover pt-24 relative`}
       >
         <Wrapper className="">
           <div className="absolute bottom-40">
-            <h1 className="uppercase text-blue-600 font-bold text-6xl">
+            <h1 className="uppercase text-gray-100 font-bold text-6xl">
               k per l&apos;asso.
             </h1>
-            <h3 className="uppercase text-red-500 font-bold text-2xl md:text-3xl">
+            <h3 className="uppercase text-yellow-400 font-bold text-2xl md:text-3xl">
               get yourself a piece of kendu
             </h3>
           </div>
@@ -62,8 +62,8 @@ export default function Home({ video_categories, image_categories }: any) {
           <h2 className="uppercase text-yellow-400 font-bold text-5xl mb-5">
             chi siamo
           </h2>
-          <p className="max-w-xl text-zinc-900 text-xl text-justify">
-            Kendu è un viaggio indimenticabile sui binari della creatività
+          <p className="max-w-xl text-zinc-900 text-xl text-center">
+            Kendu è un viaggio indimenticabile sui binari della creatività.
             Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
             branding... esplorando ed esaudendo ogni vostra singola esigenza. Da
             qualche anno abbiamo deciso di aprire uno shop-online. K è il

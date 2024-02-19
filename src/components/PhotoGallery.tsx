@@ -33,6 +33,12 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         }
       }}
     >
+      <div
+        onClick={() => setSelectedCategory(undefined)}
+        className="hidden lg:block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+      >
+        <IoMdClose></IoMdClose>
+      </div>
       <Wrapper className="w-screen md:w-10/12 relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
           <CarouselAdapter>
@@ -51,13 +57,6 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
               />
             ))}
           </CarouselAdapter>
-
-          <div
-            onClick={() => setSelectedCategory(undefined)}
-            className="hidden lg:block absolute top-5 left-28 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
-          >
-            <IoMdClose></IoMdClose>
-          </div>
         </div>
 
         <div className="hidden absolute bottom-5 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">

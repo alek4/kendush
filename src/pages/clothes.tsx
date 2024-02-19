@@ -14,7 +14,7 @@ export default function Clothes({ products }: any) {
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
           <h1 className="text-6xl font-bold mb-5">FELPE & T-SHIRT</h1>
-          <p className="text-4xl mb-10">
+          <p className="text-2xl mb-10">
             POSSIBILITA DI PERSONALIZZARE TUTTI I NOSTRI DESIGN CON IL TUO NOME
           </p>
           <div className="flex flex-col gap-5 md:max-w-xs">

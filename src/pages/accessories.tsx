@@ -10,11 +10,11 @@ import { urlForImage } from "../../sanity/lib/image";
 
 export default function Accessories({ products }: any) {
   return (
-    <div className="md:h-screen bg-[#f2f0ed] pt-24">
+    <div className="min-h-screen md:h-screen bg-[#f2f0ed] pt-24">
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
-          <h1 className="text-6xl font-bold mb-5">ACCESSORIES</h1>
-          <ul className="text-3xl mb-10">
+          <h1 className="text-4xl md:text-6xl font-bold mb-5">ACCESSORIES</h1>
+          <ul className="text-2xl mb-10">
             <li>WOMAN MAN</li>
             <li>KENDU:</li>
             <li>TIE DYE</li>
@@ -35,7 +35,6 @@ export default function Accessories({ products }: any) {
             </NextLink>
           </div>
         </div>
-        {/* <GridProducts category={"clothes"}></GridProducts> */}
         <div className="grid grid-cols-1 overflow-x-clip overflow-y-auto gap-5 mb-24 md:h-[calc(100vh-12rem-5rem)] sm:grid-cols-2">
           {products.map((prod: any) => (
             <NextLink

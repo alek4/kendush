@@ -19,7 +19,6 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
-  
   return videos ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -29,11 +28,21 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         }
       }}
     >
+      <div
+        onClick={() => setSelectedCategory(undefined)}
+        className="hidden lg:block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+      >
+        <IoMdClose></IoMdClose>
+      </div>
+
       <Wrapper className="relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
           <CarouselAdapter>
             {videos.map((vid, index) => (
-              <div key={index} className="duration-500 object-cover aspect-[16/9] shrink-0 basis-full">
+              <div
+                key={index}
+                className="duration-500 object-cover aspect-[16/9] shrink-0 basis-full"
+              >
                 <ReactPlayer
                   url={vid.fileURL}
                   key={index}
@@ -46,13 +55,6 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
               </div>
             ))}
           </CarouselAdapter>
-
-          <div
-            onClick={() => setSelectedCategory(undefined)}
-            className="hidden lg:block absolute top-5 left-28 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
-          >
-            <IoMdClose></IoMdClose>
-          </div>
         </div>
 
         <div className="hidden absolute bottom-12 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
