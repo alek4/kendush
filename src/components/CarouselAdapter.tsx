@@ -23,6 +23,7 @@ export default function CarouselAdapter({
       showStatus={true}
       showIndicators={false}
       infiniteLoop
+      autoFocus
       renderArrowNext={(
         clickHandler: () => void,
         hasNext: boolean,

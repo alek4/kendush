@@ -48,7 +48,6 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
                   key={index}
                   width={"100%"}
                   height={"auto"}
-                  lazy="true"
                   controls
                   loop
                 />

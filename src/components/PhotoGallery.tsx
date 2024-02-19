@@ -22,8 +22,6 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
-
   return images ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -45,10 +43,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
             {images.map((img, index) => (
               <Image
                 key={index}
-                className={`duration-500 object-cover aspect-[16/9] ${
-                  isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
-                }`}
-                onLoadingComplete={() => setIsLoading(false)}
+                className={`duration-500 object-cover aspect-[16/9] `}
                 src={urlForImage(img.image)}
                 width={0}
                 height={0}

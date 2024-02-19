@@ -9,7 +9,7 @@ interface NavBarProps {
 const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
   const [navbar, setNavbar] = useState(false);
   const buttonStyle =
-    "text-zinc-900 bg-yellow-300 px-4 py-3 rounded-lg h-full flex items-center justify-center text-white uppercase";
+    "text-zinc-900 bg-yellow-300 px-2 py-1 rounded-lg h-full flex items-center justify-center text-white uppercase font-semibold";
 
   return (
     <nav className="fixed bottom-14 right-9 md:right-16 lg:right-20 xl:right-32 2xl:right-52">
@@ -21,7 +21,7 @@ const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
             }`}
           >
             <ul className="items-end justify-center space-y-5 flex flex-col md:items-stretch md:flex-row md:space-x-3 md:space-y-0">
-              <div className="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-3">
+              <div className="flex flex-row gap-3 flex-wrap justify-end md:space-y-0 md:flex-row">
                 <NextLink href="/">
                   <li className={buttonStyle}>home</li>
                 </NextLink>
@@ -35,19 +35,19 @@ const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
                   <li className={buttonStyle}>carrello</li>
                 </NextLink>) : null}
               </div>
-              <div className="grid grid-cols-2 gap-3 md:flex">
+              <div className="flex gap-3 md:flex">
                 <NextLink href="https://www.facebook.com/yvon.bolankendu.3/">
-                  <li className={`${buttonStyle} py-4 text-2xl`}>
+                  <li className={`${buttonStyle} text-2xl`}>
                     <FaFacebook></FaFacebook>
                   </li>
                 </NextLink>
                 <NextLink href="https://www.instagram.com/kendu_official/">
-                  <li className={`${buttonStyle} py-4 text-2xl`}>
+                  <li className={`${buttonStyle} text-2xl`}>
                     <FaInstagram></FaInstagram>
                   </li>
                 </NextLink>
                 <NextLink href="https://www.youtube.com/channel/UCHqg3Se8c_s9s_f6s9eHzlw?view_as=subscriber">
-                  <li className={`${buttonStyle} py-4 text-2xl`}>
+                  <li className={`${buttonStyle} text-2xl`}>
                     <FaYoutube></FaYoutube>
                   </li>
                 </NextLink>

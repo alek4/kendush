@@ -9,7 +9,7 @@ export default function collections({}: Props) {
   return (
     <div
       id="collection"
-      className="h-screen pt-24 pb-24 bg-[url(https://cdn.sanity.io/images/6rsophlq/production/07e4c1255ab24ef026d09a4b47e0989a7e04ddfe-1445x1066.jpg)] bg-center bg-cover"
+      className="h-screen pt-24 pb-24 bg-[url(https://cdn.sanity.io/images/6rsophlq/production/a3bf7f34b9d9a3484ac5de700a1ea26d83358c58-1600x1279.jpg)] bg-top bg-cover"
     >
       <Wrapper className="">
         <div className="mb-16">
