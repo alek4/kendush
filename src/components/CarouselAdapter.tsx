@@ -8,6 +8,7 @@ type Props = {
   autoSlide?: boolean;
   autoSlideInterval?: number;
   children: any;
+  handleChange?: Function;
 };
 
 export default function CarouselAdapter({
@@ -15,6 +16,7 @@ export default function CarouselAdapter({
   autoSlide = false,
   autoSlideInterval = 1000,
   children,
+  handleChange
 }: Props) {
   return (
     <Carousel
@@ -24,6 +26,7 @@ export default function CarouselAdapter({
       showIndicators={false}
       infiniteLoop
       autoFocus
+      onChange={handleChange ? (index: Number, item: React.ReactNode) => handleChange(index, item) : undefined}
       renderArrowNext={(
         clickHandler: () => void,
         hasNext: boolean,

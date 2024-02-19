@@ -1,4 +1,13 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import {
+  Dispatch,
+  FC,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { IoMdClose } from "react-icons/io";
 import CarouselVideo from "./CarouselVideo";
 import { Wrapper } from "./Wrapper";
@@ -19,6 +28,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
+
   return videos ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -49,7 +59,8 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
                   width={"100%"}
                   height={"auto"}
                   controls
-                  loop
+                  muted
+                  //loop
                 />
               </div>
             ))}
