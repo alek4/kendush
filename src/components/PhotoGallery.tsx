@@ -9,6 +9,8 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CarouselAdapter from "./CarouselAdapter";
 import { urlForImage } from "../../sanity/lib/image";
 
+import Slider from "react-slick";
+
 interface PhotoGalleryProps {
   images: any[] | undefined;
   setSelectedCategory: Dispatch<SetStateAction<string | undefined>>;
@@ -33,25 +35,31 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
     >
       <div
         onClick={() => setSelectedCategory(undefined)}
-        className="hidden lg:block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+        className="block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
       >
         <IoMdClose></IoMdClose>
       </div>
       <Wrapper className="w-screen md:w-10/12 relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
-          <CarouselAdapter>
+          <Slider
+            dots={true}
+            infinite={true}
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+            adaptiveHeight={true}
+          >
             {images.map((img, index) => (
-              <Image
-                key={index}
-                className={`duration-500 object-cover aspect-[16/9] `}
-                src={urlForImage(img.image)}
-                width={0}
-                height={0}
-                sizes="100wh"
-                alt={`img-${index + 1}`}
-              />
+              <div key={index} className="relative h-[80vh]">
+                <Image
+                  className={`object-contain`}
+                  src={urlForImage(img.image)}
+                  fill
+                  alt={`img-${index + 1}`}
+                />
+              </div>
             ))}
-          </CarouselAdapter>
+          </Slider>
         </div>
 
         <div className="hidden absolute bottom-5 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
@@ -59,7 +67,9 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
             <div
               key={i}
               className={`flex items-center rounded-xl py-3 px-5  ${
-                currentCategory === category ? "bg-white" : "bg-white/50 "
+                currentCategory === category
+                  ? "bg-white"
+                  : "bg-white/50 "
               } border-2 border-white cursor-pointer`}
               onClick={() => {
                 setSelectedCategory(category);

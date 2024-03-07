@@ -9,6 +9,9 @@ import { FaChevronRight } from "react-icons/fa";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { client } from "../../sanity/lib/client";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function Home({ video_categories, image_categories }: any) {
   const [selectedCategory, setSelectedCategory] = useState<string>();
   const [selectedVideoCategory, setSelectedVideoCategory] = useState<string>();
