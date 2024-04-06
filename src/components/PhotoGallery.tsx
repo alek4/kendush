@@ -24,6 +24,30 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
   currentCategory,
   setSelectedCategory,
 }) => {
+  const NextArrow: React.FC = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className="md:group-hover:block hidden absolute top-[50%] -translate-x-0 translate-y-[-50%] right-20 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+      >
+        <FaChevronRight />
+      </div>
+    );
+  };
+
+  const PrevArrow: React.FC = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className={` md:group-hover:block hidden absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-20 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer`}
+      >
+        <FaChevronLeft />
+      </div>
+    );
+  };
+
   return images ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -42,12 +66,15 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
       <Wrapper className="w-screen md:w-10/12 relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
           <Slider
+            className="group"
             dots={true}
             infinite={true}
             speed={500}
             slidesToShow={1}
             slidesToScroll={1}
             adaptiveHeight={true}
+            nextArrow={<NextArrow />}
+            prevArrow={<PrevArrow />}
           >
             {images.map((img, index) => (
               <div key={index} className="relative h-[80vh]">
@@ -55,6 +82,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
                   className={`object-contain`}
                   src={urlForImage(img.image)}
                   fill
+                  sizes={"100wh"}
                   alt={`img-${index + 1}`}
                 />
               </div>

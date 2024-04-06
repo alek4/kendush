@@ -51,6 +51,7 @@ function BlurImage({ image, title }: BlurImageProps) {
         }`}
         style={{ width: "100%", height: "auto" }} // optional
         onLoadingComplete={() => setIsLoading(false)}
+        priority
       ></Image>
       <h5 className="absolute bottom-5 left-5 text-2xl font-bold text-gray-100 capitalize">
         {title}

@@ -19,6 +19,7 @@ import { Player } from "video-react";
 import Slider from "react-slick";
 
 import { client } from "../../sanity/lib/client";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface PhotoGalleryProps {
   videos: any[] | undefined;
@@ -92,6 +93,30 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
     });
   };
 
+  const NextArrow: React.FC = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className="md:group-hover:block hidden absolute top-[50%] -translate-x-0 translate-y-[-50%] right-20 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer"
+      >
+        <FaChevronRight />
+      </div>
+    );
+  };
+
+  const PrevArrow: React.FC = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className={` md:group-hover:block hidden absolute z-50 top-[50%] -translate-x-0 translate-y-[-50%] left-20 text-2xl p-5 rounded-full bg-black/20 text-white cursor-pointer`}
+      >
+        <FaChevronLeft />
+      </div>
+    );
+  };
+
   return videos ? (
     <div
       className={`fixed w-screen h-screen top-0 left-0 z-10 bg-[rgba(0,0,0,0.9)] flex items-center`}
@@ -110,26 +135,8 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
 
       <Wrapper className="relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
-          {/* <CarouselAdapter>
-            {videos.map((vid, index) => (
-              <div
-                key={index}
-                className="duration-500 object-cover aspect-[16/9] shrink-0 basis-full"
-              >
-                <ReactPlayer
-                  url={vid.fileURL}
-                  key={index}
-                  width={"100%"}
-                  height={"auto"}
-                  controls
-                  muted
-                  //loop
-                />
-              </div>
-            ))}
-          </CarouselAdapter> */}
-
           <Slider
+            className="group"
             infinite={true}
             speed={500}
             slidesToShow={1}
@@ -141,6 +148,8 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
               }
               handleSlideChange();
             }}
+            nextArrow={<NextArrow />}
+            prevArrow={<PrevArrow />}
           >
             {videos.map((video, index) => (
               <div
