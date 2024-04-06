@@ -11,6 +11,7 @@ import { client } from "../../sanity/lib/client";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "node_modules/video-react/dist/video-react.css";
 
 export default function Home({ video_categories, image_categories }: any) {
   const [selectedCategory, setSelectedCategory] = useState<string>();
@@ -32,16 +33,16 @@ export default function Home({ video_categories, image_categories }: any) {
     });
   }, [selectedCategory]);
 
-  useEffect(() => {
-    if (!selectedVideoCategory) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (!selectedVideoCategory) {
+  //     return;
+  //   }
 
-    const query_video = `*[_type == "video" && category->name == "${selectedVideoCategory}"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
-    client.fetch(query_video).then((res) => {
-      setVideos(res);
-    });
-  }, [selectedVideoCategory]);
+  //   const query_video = `*[_type == "video" && category->name == "${selectedVideoCategory}"]{name, "category_name": category->name, "fileURL": video.asset->url}`;
+  //   client.fetch(query_video).then((res) => {
+  //     setVideos(res);
+  //   });
+  // }, [selectedVideoCategory]);
 
   return (
     <>

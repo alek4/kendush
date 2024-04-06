@@ -15,6 +15,11 @@ import { Carousel } from "react-responsive-carousel";
 import ReactPlayer from "react-player";
 import CarouselAdapter from "./CarouselAdapter";
 
+import { Player } from "video-react";
+import Slider from "react-slick";
+
+import { client } from "../../sanity/lib/client";
+
 interface PhotoGalleryProps {
   videos: any[] | undefined;
   setSelectedCategory: Dispatch<SetStateAction<string | undefined>>;
@@ -23,11 +28,69 @@ interface PhotoGalleryProps {
 }
 
 const PhotoGallery: FC<PhotoGalleryProps> = ({
-  videos,
+  // videos,
   categories,
   currentCategory,
   setSelectedCategory,
 }) => {
+  const [videos, setVideos] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [fetchingMore, setFetchingMore] = useState(false);
+  const [lastId, setLastId] = useState<Number>(0);
+  const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    let response: any[] = [];
+    const fetchVideos = async () => {
+      try {
+        const query_video = `*[_type == "video" && category->name == "${currentCategory}" && _id > "${lastId}"] | order(_id) [0...3] {_id, name, "category_name": category->name, "fileURL": video.asset->url}`;
+        response = await client.fetch(query_video);
+
+        setVideos((prevVideos) => {
+          if (response.length === 0) return [...prevVideos];
+
+          if (
+            prevVideos.length !== 0 &&
+            prevVideos[prevVideos.length - 1]._id ==
+              response[response.length - 1]._id
+          )
+            return [...prevVideos];
+
+          return [...prevVideos, ...response];
+        }); // Append new videos to existing ones
+        setHasMore(response.length > 0); // Check if there are more videos to fetch
+
+        if (response.length > 0) {
+          setLastId(response[response.length - 1]._id);
+        } else {
+          setLastId(-1); // Reached the end
+          setFetchingMore(false);
+        }
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      } finally {
+        setLoading(false);
+        setFetchingMore(false);
+      }
+    };
+
+    if ((loading || fetchingMore) && lastId !== -1) {
+      fetchVideos();
+    }
+  }, [loading, fetchingMore, lastId, currentCategory, videos]);
+
+  const loadMore = () => {
+    if (!loading && !fetchingMore && hasMore) {
+      setFetchingMore(true);
+    }
+  };
+
+  const handleSlideChange = () => {
+    // Pause all videos before the slide changes
+    document.querySelectorAll("video").forEach((video) => {
+      video.pause();
+    });
+  };
 
   return videos ? (
     <div
@@ -47,7 +110,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
 
       <Wrapper className="relative flex flex-col gap-5">
         <div className="w-full mx-auto relative">
-          <CarouselAdapter>
+          {/* <CarouselAdapter>
             {videos.map((vid, index) => (
               <div
                 key={index}
@@ -64,7 +127,33 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
                 />
               </div>
             ))}
-          </CarouselAdapter>
+          </CarouselAdapter> */}
+
+          <Slider
+            infinite={true}
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+            adaptiveHeight={true}
+            beforeChange={(oldIndex, newIndex) => {
+              if (newIndex == videos.length - 1) {
+                loadMore();
+              }
+              handleSlideChange();
+            }}
+          >
+            {videos.map((video, index) => (
+              <div
+                key={index}
+                className="aspect-[16/9] shrink-0 basis-full"
+              >
+                <video controls width={"100%"} height={"auto"}>
+                  <source src={video.fileURL} datatype="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ))}
+          </Slider>
         </div>
 
         <div className="hidden absolute bottom-12 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
@@ -72,7 +161,9 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
             <div
               key={i}
               className={`flex items-center rounded-xl py-3 px-5  ${
-                currentCategory === category ? "bg-white" : "bg-white/50 "
+                currentCategory === category
+                  ? "bg-white"
+                  : "bg-white/50 "
               } border-2 border-white cursor-pointer`}
               onClick={() => {
                 setSelectedCategory(category);
