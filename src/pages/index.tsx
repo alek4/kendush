@@ -81,7 +81,7 @@ export default function Home({ video_categories, image_categories }: any) {
               K è il marchio.
             </p>
             <p className="max-w-xl text-zinc-900 text-xl text-left">
-              &quot;K per l&apos;asso&quot;, perchè crediamo che ognuno di voi ha
+              &quot;K per l&apos;asso&quot; è il motto, perchè crediamo che ognuno di voi ha
               qualità eccezionali, unica nel suo genere.
             </p>
           </div>

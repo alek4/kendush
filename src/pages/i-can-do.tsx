@@ -14,14 +14,17 @@ export default function ICanDo({ products }: any) {
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
           <h1 className="text-6xl font-bold mb-5">I CAN DO</h1>
+          <p className="text-2xl mb-10">
+            POSSIBILIT&Agrave; DI SCEGLIERE IL COLORE DELLA T-SHIRT E DI STAMPARE LE GRAFICHE ANCHE SULLE FELPE
+          </p>
           <p className="text-2xl mb-3">
             In occasione della nostra nuova collaborazione con la Onlus Italiana
             Solidarietà Pace e Sviluppo (SPS) abbiamo creato la nuova linea I
-            CAN DO T-shirt/felpe.
+            CAN DO
           </p>
           <p className="text-2xl mb-3">
             Parte del ricavato sarà devoluto ai progetti di sostegno sanitario e
-            scolastico in favore dei quaranta bambini che vivono presso
+            scolastico in favore dei bambini che vivono presso
             l’associazione beninese Ensemble pour Grandir (Ouidah-Benin-Africa
             occidentale).
           </p>
@@ -34,7 +37,7 @@ export default function ICanDo({ products }: any) {
               className="bg-white rounded-full py-4 text-center"
               href="/clothes"
             >
-              T-SHIRT & FELPE
+              T-SHIRT
             </NextLink>
             <NextLink
               className="bg-white rounded-full py-4 text-center"

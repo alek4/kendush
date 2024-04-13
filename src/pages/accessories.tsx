@@ -25,7 +25,7 @@ export default function Accessories({ products }: any) {
               className="bg-white rounded-full py-4 text-center"
               href="/clothes"
             >
-              T-SHIRT & FELPE
+              T-SHIRT
             </NextLink>
             <NextLink
               className="bg-white rounded-full py-4 text-center"
