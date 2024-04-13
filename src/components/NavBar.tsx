@@ -51,6 +51,11 @@ const NavBar: FC<NavBarProps> = ({isHomePage = false}) => {
                     <FaYoutube></FaYoutube>
                   </li>
                 </NextLink>
+                <NextLink href="https://wa.me/393661329976">
+                  <li className={`${buttonStyle} text-2xl`}>
+                    <FaWhatsapp></FaWhatsapp>
+                  </li>
+                </NextLink>
               </div>
             </ul>
           </div>

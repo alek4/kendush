@@ -60,6 +60,7 @@ export default function ICanDo({ products }: any) {
                 width={600}
                 height={600}
                 alt={prod.name}
+                priority
               />
               <div className="flex flex-row justify-between mt-2 text-lg">
                 <p>{prod.name}</p>

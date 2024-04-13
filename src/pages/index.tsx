@@ -181,6 +181,15 @@ export default function Home({ video_categories, image_categories }: any) {
                   youtube
                 </NextLink>
               </li>
+              <li>
+                <NextLink
+                  href={
+                    "https://wa.me/393661329976"
+                  }
+                >
+                  whastapp
+                </NextLink>
+              </li>
             </ul>
           </div>
         </Wrapper>
