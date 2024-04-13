@@ -39,6 +39,12 @@ export default function collections({}: Props) {
           >
             i can do
           </NextLink>
+          <NextLink
+            className="bg-white rounded-lg py-5 w-full text-center uppercase "
+            href={"/most-wanted"}
+          >
+            most wanted
+          </NextLink>
         </div>
       </Wrapper>
       <NavBar></NavBar>

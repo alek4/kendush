@@ -44,6 +44,7 @@ export default {
                 { title: "Clothes", value: "clothes" },
                 { title: "Accessories", value: "accessories" },
                 { title: "ICANDO", value: "icando" },
+                { title: "Most wanted", value: "most_wanted" },
             ],
         },
     }

@@ -45,6 +45,12 @@ export default function ICanDo({ products }: any) {
             >
               ACCESSORIES
             </NextLink>
+            <NextLink
+              className="bg-white rounded-full py-4 text-center"
+              href="/most-wanted"
+            >
+              MOST WANTED
+            </NextLink>
           </div>
         </div>
         {/* <GridProducts category={"clothes"}></GridProducts> */}

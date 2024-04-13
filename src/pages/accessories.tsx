@@ -33,6 +33,12 @@ export default function Accessories({ products }: any) {
             >
               I CAN DO
             </NextLink>
+            <NextLink
+              className="bg-white rounded-full py-4 text-center"
+              href="/most-wanted"
+            >
+              MOST WANTED
+            </NextLink>
           </div>
         </div>
         <div className="grid grid-cols-1 overflow-x-clip overflow-y-auto gap-5 mb-24 md:h-[calc(100vh-12rem-5rem)] sm:grid-cols-2">
