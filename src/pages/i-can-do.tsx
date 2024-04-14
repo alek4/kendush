@@ -82,7 +82,7 @@ export default function ICanDo({ products }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product" && category == "icando"]';
+  const query = '*[_type == "product" && category == "icando"] | order(color asc)';
   const products = await client.fetch(query);
 
   return {

@@ -67,7 +67,7 @@ export default function Clothes({ products }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product" && category == "clothes"]';
+  const query = '*[_type == "product" && category == "clothes"] | order(color asc)';
   const products = await client.fetch(query);
 
   return {

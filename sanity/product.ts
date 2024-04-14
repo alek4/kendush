@@ -47,6 +47,17 @@ export default {
                 { title: "Most wanted", value: "most_wanted" },
             ],
         },
+    },
+    {
+        name: 'color',
+        title: "Color",
+        type: 'string',
+        options: {
+            list: [
+                { title: "White", value: "white" },
+                { title: "Black", value: "black" },
+            ],
+        },
     }
     ]
 }

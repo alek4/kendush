@@ -67,7 +67,7 @@ export default function MostWanted({ products }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product" && category == "most_wanted"]';
+  const query = '*[_type == "product" && category == "most_wanted"] | order(color asc)';
   const products = await client.fetch(query);
 
   return {
