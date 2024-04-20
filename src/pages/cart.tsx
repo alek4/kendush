@@ -34,6 +34,7 @@ export default function Cart() {
           </h1>
         ) : (
           <div className="flex flex-col gap-5 max-w-4xl mx-auto">
+            <p className="text-lg font-semibold text-center bg-neutral-400 py-3 px-3 rounded-lg">Se vuoi personalizzare i tuoi prodotti, per favore faccelo sapere nei dettagli del tuo ordine!</p>
             <div className="flex justify-end items-center">
               <h3 className="text-lg">
                 Totale:{" "}
