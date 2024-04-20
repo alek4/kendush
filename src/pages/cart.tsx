@@ -68,7 +68,7 @@ export default function Cart() {
                 />
                 <div className="flex flex-col justify-between w-full pr-5 py-4">
                   <div>
-                    <h3 className="text-xl md:text-3xl font-bold mb-5">{prod.name}</h3>
+                    <h3 className="text-xl uppercase md:text-3xl font-bold mb-5">{prod.name}</h3>
                     <div className="flex flex-col md:flex-row gap-3 md:gap-7 h-10 items-stretch">
                       <p className="font-bold text-xl my-auto">
                         Taglia: <span className="font-normal">{prod.size}</span>

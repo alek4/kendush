@@ -69,7 +69,7 @@ export default function ICanDo({ products }: any) {
                 priority
               />
               <div className="flex flex-row justify-between mt-2 text-lg">
-                <p>{prod.name}</p>
+                <p>{prod.name.toUpperCase()}</p>
                 <p>{prod.price} €</p>
               </div>
             </NextLink>
