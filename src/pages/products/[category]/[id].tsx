@@ -34,7 +34,7 @@ export default function ProductPage(product: any) {
   return (
     <>
       <Head>
-        <title>{`KENDUSH | ${product?.name.toUpperCase()}`}</title>
+        <title>{`KENDUSH | ${product?.name?.toUpperCase()}`}</title>
       </Head>
       <div className="h-full lg:h-screen bg-[#f2f0ed] pt-14 lg:pt-24">
         <Wrapper className="flex flex-col lg:gap-20 lg:flex-row">
