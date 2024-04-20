@@ -70,9 +70,9 @@ export default function Cart() {
                   <div>
                     <h3 className="text-xl uppercase md:text-3xl font-bold mb-5">{prod.name}</h3>
                     <div className="flex flex-col md:flex-row gap-3 md:gap-7 h-10 items-stretch">
-                      <p className="font-bold text-xl my-auto">
+                      {prod.category !== "accessories" ? <p className="font-bold text-xl my-auto">
                         Taglia: <span className="font-normal">{prod.size}</span>
-                      </p>
+                      </p> : null}
                       <div className="flex">
                         <p className="hidden md:inline-block font-bold text-xl my-auto mr-3">
                           Quantità:{" "}

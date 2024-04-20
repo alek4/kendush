@@ -120,7 +120,7 @@ export default function ProductPage(product: any) {
             </div>
             <p className="font-bold text-3xl mb-10">{product?.price} €</p>
             <div className="flex-col md:flex md:flex-row items-stretch gap-5 mb-8">
-              <div className="mb-5 md:mb-0 flex items-stretch gap-5">
+              {product.category !== "accessories" ? <div className="mb-5 md:mb-0 flex items-stretch gap-5">
                 <p className="font-bold my-auto text-xl">Taglia: </p>
                 <select
                   onChange={(e) => {
@@ -136,14 +136,14 @@ export default function ProductPage(product: any) {
                   <option value="L">L</option>
                   <option value="XL">XL</option>
                 </select>
-              </div>
+              </div> : null}
 
               <div className="flex h-12 md:h-auto items-stretch gap-5">
                 <p className="font-bold my-auto text-xl ">Quantità: </p>
                 <div className="rounded-md bg-neutral-300 flex items-center gap-5">
                   <div
                     onClick={() => decQty()}
-                    className="rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center"
+                    className="py-3 rounded-l-md hover:bg-neutral-400 h-full px-4 flex items-center"
                   >
                     <FiMinus />
                   </div>
