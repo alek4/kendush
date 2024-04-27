@@ -10,7 +10,7 @@ import { urlForImage } from "../../sanity/lib/image";
 
 export default function ICanDo({ products }: any) {
   return (
-    <div className="md:h-screen bg-[#f2f0ed] pt-24">
+    <div className=" bg-[#f2f0ed] pt-24 pb-20">
       <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div className="mb-20 md:mb-auto text-zinc-900">
           <h1 className="text-6xl font-bold mb-5">I CAN DO</h1>
@@ -82,7 +82,7 @@ export default function ICanDo({ products }: any) {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product" && category == "icando"] | order(color asc)';
+  const query = '*[_type == "product" && category == "icando"] | order(color asc) | order(name asc)';
   const products = await client.fetch(query);
 
   return {
