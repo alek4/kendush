@@ -10,14 +10,14 @@ import { urlForImage } from "../../sanity/lib/image";
 
 export default function Clothes({ products }: any) {
   return (
-    <div className="md:h-screen bg-[#f2f0ed] pt-24">
-      <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
-        <div className="mb-20 md:mb-auto text-zinc-900">
+    <div className=" bg-[#f2f0ed] pt-24 pb-20">
+      <Wrapper className="grid grid-cols-1 lg:gap-20 lg:grid-cols-2">
+        <div className="mb-20 lg:mb-auto text-zinc-900">
           <h1 className="text-6xl font-bold mb-5">T-SHIRT</h1>
           <p className="text-2xl mb-10">
             POSSIBILIT&Agrave; DI SCEGLIERE IL COLORE DELLA T-SHIRT E DI STAMPARE LE GRAFICHE ANCHE SULLE FELPE
           </p>
-          <div className="flex flex-col gap-5 md:max-w-xs">
+          <div className="flex flex-col gap-5 lg:max-w-xs">
             <NextLink
               className="bg-white rounded-full py-4 text-center"
               href="/accessories"

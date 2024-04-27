@@ -10,9 +10,9 @@ import { urlForImage } from "../../sanity/lib/image";
 
 export default function Accessories({ products }: any) {
   return (
-    <div className="min-h-screen md:h-screen bg-[#f2f0ed] pt-24">
-      <Wrapper className="grid grid-cols-1 md:gap-20 md:grid-cols-2">
-        <div className="mb-20 md:mb-auto text-zinc-900">
+    <div className=" bg-[#f2f0ed] pt-24 pb-20">
+      <Wrapper className="grid grid-cols-1 lg:gap-20 lg:grid-cols-2">
+        <div className="mb-20 lg:mb-auto text-zinc-900">
           <h1 className="text-4xl md:text-6xl font-bold mb-5">ACCESSORIES</h1>
           <ul className="text-2xl mb-10">
             <li>WOMAN MAN</li>
@@ -20,7 +20,7 @@ export default function Accessories({ products }: any) {
             <li>TIE DYE</li>
             <li>READY 4U</li>
           </ul>
-          <div className="flex flex-col gap-5 md:max-w-xs">
+          <div className="flex flex-col gap-5 lg:max-w-xs">
           <NextLink
               className="bg-white rounded-full py-4 text-center"
               href="/clothes"
