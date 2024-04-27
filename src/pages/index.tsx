@@ -13,9 +13,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "node_modules/video-react/dist/video-react.css";
 
-export default function Home({ video_categories, image_categories }: any) {
+export default function Home({
+  video_categories,
+  image_categories,
+}: any) {
   const [selectedCategory, setSelectedCategory] = useState<string>();
-  const [selectedVideoCategory, setSelectedVideoCategory] = useState<string>();
+  const [selectedVideoCategory, setSelectedVideoCategory] =
+    useState<string>();
 
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -68,21 +72,25 @@ export default function Home({ video_categories, image_categories }: any) {
           </h2>
           <div className="flex flex-col justify-start">
             <p className="max-w-xl text-zinc-900 text-xl text-left">
-              Kendu è un viaggio indimenticabile sui binari della creatività.
+              Kendu è un viaggio indimenticabile sui binari della
+              creatività.
             </p>
             <p className="max-w-xl text-zinc-900 text-xl text-left">
-              Creiamo e gestiamo contenuti per i canali social, feste, matrimoni,
-              branding... esplorando ed esaudendo ogni vostra singola esigenza.
+              Creiamo e gestiamo contenuti per i canali social, feste,
+              matrimoni, branding... esplorando ed esaudendo ogni
+              vostra singola esigenza.
             </p>
             <p className="max-w-xl text-zinc-900 text-xl text-left">
-              Da qualche anno abbiamo deciso di aprire uno shop-online.
+              Da qualche anno abbiamo deciso di aprire uno
+              shop-online.
             </p>
             <p className="max-w-xl text-zinc-900 text-xl text-left">
               K è il marchio.
             </p>
             <p className="max-w-xl text-zinc-900 text-xl text-left">
-              &quot;K per l&apos;asso&quot; è il motto, perchè crediamo che ognuno di voi ha
-              qualità eccezionali, unica nel suo genere.
+              &quot;K per l&apos;asso&quot;, perchè crediamo che
+              ognuno di voi abbia qualità eccezionali, uniche nel suo
+              genere.
             </p>
           </div>
         </Wrapper>
@@ -107,7 +115,9 @@ export default function Home({ video_categories, image_categories }: any) {
                 (img: any) => img.category_name === selectedCategory
               )}
               currentCategory={selectedCategory}
-              categories={image_categories.map((img: any) => img.name)}
+              categories={image_categories.map(
+                (img: any) => img.name
+              )}
               setSelectedCategory={setSelectedCategory}
             />
           ) : null}
@@ -124,10 +134,13 @@ export default function Home({ video_categories, image_categories }: any) {
           {selectedVideoCategory ? (
             <VideoGallery
               videos={videos.filter(
-                (video: any) => video.category_name === selectedVideoCategory
+                (video: any) =>
+                  video.category_name === selectedVideoCategory
               )}
               currentCategory={selectedVideoCategory}
-              categories={video_categories.map((thumb: any) => thumb.name)}
+              categories={video_categories.map(
+                (thumb: any) => thumb.name
+              )}
               setSelectedCategory={setSelectedVideoCategory}
             />
           ) : null}
@@ -146,7 +159,10 @@ export default function Home({ video_categories, image_categories }: any) {
           </NextLink>
         </Wrapper>
       </div>
-      <div id="contact" className="md:h-screen pt-24 pb-24 bg-zinc-500">
+      <div
+        id="contact"
+        className="md:h-screen pt-24 pb-24 bg-zinc-500"
+      >
         <Wrapper className="flex flex-col justify-between gap-20 lg:flex-row">
           <div className="uppercase font-bold text-4xl md:text-6xl text-white">
             <h1>fatti sentire.</h1>
@@ -163,12 +179,16 @@ export default function Home({ video_categories, image_categories }: any) {
                 </NextLink>
               </li>
               <li>
-                <NextLink href={"https://www.instagram.com/kendu_official/"}>
+                <NextLink
+                  href={"https://www.instagram.com/kendu_official/"}
+                >
                   instagram
                 </NextLink>
               </li>
               <li>
-                <NextLink href={"https://www.facebook.com/yvon.bolankendu.3/"}>
+                <NextLink
+                  href={"https://www.facebook.com/yvon.bolankendu.3/"}
+                >
                   facebook
                 </NextLink>
               </li>
@@ -182,11 +202,7 @@ export default function Home({ video_categories, image_categories }: any) {
                 </NextLink>
               </li>
               <li>
-                <NextLink
-                  href={
-                    "https://wa.me/393661329976"
-                  }
-                >
+                <NextLink href={"https://wa.me/393661329976"}>
                   whastapp
                 </NextLink>
               </li>
@@ -204,7 +220,17 @@ export const getServerSideProps = async () => {
   //   '*[_type == "video"]{name, "category_name": category->name, "fileURL": video.asset->url}';
   // const videos = await client.fetch(query_video);
   const query_video_cat = '*[_type == "video_category"]';
-  const video_categories = await client.fetch(query_video_cat);
+  var video_categories = await client.fetch(query_video_cat);
+
+  var other_work = {}
+  const filter = video_categories.filter((e: any) => {
+    if (e.name == "other work")
+      other_work = e;
+    return e.name != "other work";
+  });
+
+  video_categories = [...filter]
+  video_categories.push(other_work)
 
   // const query_image =
   //   '*[_type == "gallery_image"]{name, "category_name": category->name, image}';
