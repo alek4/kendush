@@ -68,7 +68,17 @@ export default function Clothes({ products }: any) {
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "product" && category == "clothes"] | order(color asc)';
-  const products = await client.fetch(query);
+  var products = await client.fetch(query);
+
+  var classic_hyper = {}
+  const filter = products.filter((e: any) => {
+    if (e.slug.current == "classic-hyper")
+      classic_hyper = e;
+    return e.slug.current != "classic-hyper";
+  });
+  
+  products = [...filter]
+  products.push(classic_hyper)
 
   return {
     props: { products },
