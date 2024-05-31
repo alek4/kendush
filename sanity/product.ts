@@ -64,7 +64,7 @@ export default {
         title: "Type",
         type: 'array',
         of: [{type: 'string'}],
-        hidden: ({ parent, value }) => parent?.category !== "accessories"
+        hidden: ({ parent, value }: any) => parent?.category !== "accessories"
     }
     ]
 }
