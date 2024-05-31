@@ -15,8 +15,8 @@ export default async function handler(
   console.log(data.firstName);
 
   await sendEmail({
-    // to: "bolankenduyvon@gmail.com",
-    to: "alessandro.bordo41@gmail.com",
+    to: "bolankenduyvon@gmail.com",
+    // to: "alessandro.bordo41@gmail.com",
     subject: "Nuovo Ordine Kendush",
     html: render(OrderTemplate(data)),
   });
