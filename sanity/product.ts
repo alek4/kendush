@@ -58,6 +58,13 @@ export default {
                 { title: "Black", value: "black" },
             ],
         },
+    },
+    {
+        name: 'type',
+        title: "Type",
+        type: 'array',
+        of: [{type: 'string'}],
+        hidden: ({ parent, value }) => parent?.category !== "accessories"
     }
     ]
 }

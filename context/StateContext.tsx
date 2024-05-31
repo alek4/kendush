@@ -14,6 +14,8 @@ interface Context {
   onRemove: Function
   size: Size;
   setSize: Function;
+  type?: String;
+  setType: Function;
 }
 
 type Size = "S" | "M" | "L" | "XL";
@@ -26,6 +28,7 @@ export const StateContext = ({ children }: { children: any }) => {
   const [totalQuantities, setTotalQuantities] = useState<number>(0);
   const [qty, setQty] = useState<number>(1);
   const [size, setSize] = useState<Size>("M")
+  const [type, setType] = useState<String>()
 
   const onAdd = async (product: any, quantity: number) => {
     const checkProductInCart = cartItems.find(
@@ -54,6 +57,10 @@ export const StateContext = ({ children }: { children: any }) => {
     }
 
     toast.success(`${qty} ${product.name} aggiunto al carrello.`);
+
+    setQty(1);
+    setSize("M") 
+    setType(undefined)
   };
 
   const incQty = () => setQty((prev) => prev + 1);
@@ -108,7 +115,9 @@ export const StateContext = ({ children }: { children: any }) => {
         toggleCartItemQuantity,
         onRemove,
         size,
-        setSize
+        setSize,
+        type,
+        setType
       }}
     >
       {children}

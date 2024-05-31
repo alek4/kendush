@@ -23,7 +23,8 @@ export default function ProductPage(product: any) {
   const router = useRouter();
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const { qty, incQty, decQty, onAdd, size, setSize } = useStateContext();
+  const { qty, incQty, decQty, onAdd, size, setSize, type, setType } =
+    useStateContext();
 
   useEffect(() => {
     const { category } = router.query;
@@ -64,7 +65,9 @@ export default function ProductPage(product: any) {
               <Image
                 key={index}
                 className={`duration-500 object-cover aspect-1 ${
-                  isLoading ? "grayscale blur-2xl" : "grayscale-0 blur-0"
+                  isLoading
+                    ? "grayscale blur-2xl"
+                    : "grayscale-0 blur-0"
                 }`}
                 onLoadingComplete={() => setIsLoading(false)}
                 src={urlForImage(img)}
@@ -80,7 +83,11 @@ export default function ProductPage(product: any) {
             <Zoom>
               <Image
                 className="aspect-1 object-cover w-full h-fit"
-                src={product.image == undefined ? "" : urlForImage(product?.image[selectedImage])}
+                src={
+                  product.image == undefined
+                    ? ""
+                    : urlForImage(product?.image[selectedImage])
+                }
                 alt={product?.slug?.current}
                 style={{ width: "100%", height: "auto" }} // optional
                 sizes="100wh"
@@ -100,7 +107,9 @@ export default function ProductPage(product: any) {
                   height={0}
                   sizes="100wh"
                   className={`aspect-1 object-cover max-w-[7rem] cursor-pointer ${
-                    selectedImage == i ? "border-4 border-yellow-300" : ""
+                    selectedImage == i
+                      ? "border-4 border-yellow-300"
+                      : ""
                   }`}
                   style={{ width: "100%", height: "auto" }} // optional
                 ></Image>
@@ -118,28 +127,55 @@ export default function ProductPage(product: any) {
                 {product?.detail}
               </pre>
             </div>
-            <p className="font-bold text-3xl mb-10">{product?.price} €</p>
+            <p className="font-bold text-3xl mb-10">
+              {product?.price} €
+            </p>
             <div className="flex-col md:flex md:flex-row items-stretch gap-5 mb-8">
-              {product.category !== "accessories" ? <div className="mb-5 md:mb-0 flex items-stretch gap-5">
-                <p className="font-bold my-auto text-xl">Taglia: </p>
-                <select
-                  onChange={(e) => {
-                    setSize(e.target.value);
-                  }}
-                  value={product?.size}
-                  name="size"
-                  id="size"
-                  className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
-                >
-                  <option value="M">M</option>
-                  <option value="S">S</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                </select>
-              </div> : null}
+              <div className="mb-5 md:mb-0 flex items-stretch gap-5">
+                {product.category !== "accessories" ? (
+                  <>
+                    <p className="font-bold my-auto text-xl">
+                      Taglia:
+                    </p>
+                    <select
+                      onChange={(e) => {
+                        setSize(e.target.value);
+                      }}
+                      value={product?.size}
+                      name="size"
+                      id="size"
+                      className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
+                    >
+                      <option value="M">M</option>
+                      <option value="S">S</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                    </select>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-bold my-auto text-xl">
+                      Tipo:
+                    </p>
+                    <select
+                      onChange={(e) => {
+                        setType(e.target.value);
+                      }}
+                      value={type ? type : product?.type[0]}
+                      name="type"
+                      id="type"
+                      className="py-3 px-4 mr-5 rounded-md bg-neutral-300"
+                    >
+                      {product?.type?.map((t: String, i: number) => <option value={String(t)} key={i}>{t}</option>)}
+                    </select>
+                  </>
+                )}
+              </div>
 
               <div className="flex h-12 md:h-auto items-stretch gap-5">
-                <p className="font-bold my-auto text-xl ">Quantità: </p>
+                <p className="font-bold my-auto text-xl ">
+                  Quantità:{" "}
+                </p>
                 <div className="rounded-md bg-neutral-300 flex items-center gap-5">
                   <div
                     onClick={() => decQty()}
@@ -162,8 +198,23 @@ export default function ProductPage(product: any) {
               <button
                 className="bg-white rounded-lg py-4 text-center"
                 onClick={() => {
+                  var tipo = type
+                  var id = product?._id + "+" + size
+                  if (product?.type !== undefined) {
+                    if (type === undefined) { 
+                      tipo = product.type[0]
+                    }
+                    
+                    id = id + "+" + tipo
+                  }
+
                   onAdd(
-                    { ...product, size: size, _id: product?._id + "+" + size },
+                    {
+                      ...product,
+                      size: size,
+                      type: tipo,
+                      _id: id,
+                    },
                     qty
                   );
                 }}
@@ -192,7 +243,10 @@ export async function getStaticPaths() {
 
   // Generate paths based on the products
   const paths = products?.map((product: any) => ({
-    params: { id: product?.slug.current, category: product?.category },
+    params: {
+      id: product?.slug.current,
+      category: product?.category,
+    },
   }));
 
   return {

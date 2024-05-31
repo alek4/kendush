@@ -22,7 +22,9 @@ export default function WelcomeEmail({
         <Section>
           <Row>
             <Column>Nome:</Column>
-            <Column>{firstName} {lastName}</Column>
+            <Column>
+              {firstName} {lastName}
+            </Column>
           </Row>
           <Hr></Hr>
           <Row>
@@ -43,9 +45,16 @@ export default function WelcomeEmail({
           <Row>
             <Column>
               Ordine:
-              {items.map((o)=>(
+              {items.map((o) => (
                 <>
-                  <Row>{o.name}: {o.quantity} pezzo/i - taglia: {o.size}</Row>
+                  <Row>
+                    {o.name}: {o.quantity} pezzo/i -{" "}
+                    {o.type === undefined ? (
+                      <span>taglia: {o.size} </span>
+                    ) : (
+                      <span>tipo: {o.type}</span>
+                    )}
+                  </Row>
                   <Hr></Hr>
                 </>
               ))}

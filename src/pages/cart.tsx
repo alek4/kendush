@@ -74,6 +74,9 @@ export default function Cart() {
                       {prod.category !== "accessories" ? <p className="font-bold text-xl my-auto">
                         Taglia: <span className="font-normal">{prod.size}</span>
                       </p> : null}
+                      {prod.type !== undefined ? <p className="font-bold text-xl my-auto">
+                        Tipo: <span className="font-normal">{prod.type}</span>
+                      </p> : null}
                       <div className="flex">
                         <p className="hidden md:inline-block font-bold text-xl my-auto mr-3">
                           Quantità:{" "}
@@ -100,6 +103,7 @@ export default function Cart() {
                       </div>
                     </div>
                   </div>
+                  
                   <div className="mt-16 flex items-center justify-between md:mt-5 text-lg">
                     <div>
                       <span className="hidden md:inline-block mr-1 italic">Sub-totale: </span>
