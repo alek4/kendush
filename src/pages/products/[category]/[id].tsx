@@ -96,7 +96,7 @@ export default function ProductPage(product: any) {
               />
             </Zoom>
 
-            <div className="flex flex-row gap-3 mr-3">
+            <div className="grid grid-cols-3 xl:grid-cols-4 gap-3">
               {product?.image?.map((img: any, i: number) => (
                 <Image
                   onClick={() => setSelectedImage(i)}
@@ -106,7 +106,7 @@ export default function ProductPage(product: any) {
                   width={0}
                   height={0}
                   sizes="100wh"
-                  className={`aspect-1 object-cover max-w-[7rem] cursor-pointer ${
+                  className={`aspect-1 object-cover cursor-pointer ${
                     selectedImage == i
                       ? "border-4 border-yellow-300"
                       : ""
