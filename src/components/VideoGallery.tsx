@@ -20,6 +20,7 @@ import Slider from "react-slick";
 
 import { client } from "../../sanity/lib/client";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { MdOutlineSwipe } from "react-icons/md";
 
 interface PhotoGalleryProps {
   videos: any[] | undefined;
@@ -128,7 +129,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
     >
       <div
         onClick={() => setSelectedCategory(undefined)}
-        className="hidden lg:block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
+        className="block absolute top-5 left-5 p-3 text-2xl text-white bg-black/20 rounded-full cursor-pointer"
       >
         <IoMdClose></IoMdClose>
       </div>
@@ -163,6 +164,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
               </div>
             ))}
           </Slider>
+          <MdOutlineSwipe className="md:hidden mx-auto mt-5 text-white text-3xl" />
         </div>
 
         <div className="hidden absolute bottom-12 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">

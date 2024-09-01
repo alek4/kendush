@@ -6,6 +6,7 @@ import { Wrapper } from "./Wrapper";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { MdOutlineSwipe  } from "react-icons/md";
 import CarouselAdapter from "./CarouselAdapter";
 import { urlForImage } from "../../sanity/lib/image";
 
@@ -67,7 +68,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
         <div className="w-full mx-auto relative">
           <Slider
             className="group"
-            dots={true}
+            dots={false}
             infinite={true}
             speed={500}
             slidesToShow={1}
@@ -88,6 +89,7 @@ const PhotoGallery: FC<PhotoGalleryProps> = ({
               </div>
             ))}
           </Slider>
+          <MdOutlineSwipe  className="md:hidden absolute bottom-32 left-[50%] -translate-x-[50%] text-white text-3xl" />
         </div>
 
         <div className="hidden absolute bottom-5 left-1/2 -translate-x-1/2 lg:flex flex-row gap-5">
